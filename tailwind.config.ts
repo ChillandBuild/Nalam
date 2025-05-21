@@ -63,17 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Enhanced Nalam theme colors with orange and red
+				// Enhanced Nalam theme colors with vibrant orange and red
 				nalam: {
 					orange: {
 						light: '#FFEDD5',
 						DEFAULT: '#F97316',
 						dark: '#C2410C',
+						vibrant: '#FF7A00',
 					},
 					red: {
 						light: '#FEE2E2',
 						DEFAULT: '#ea384c',
 						dark: '#B91C1C',
+						vibrant: '#FF2D55',
 					},
 					earth: {
 						light: '#D7CCC8',
@@ -83,6 +85,13 @@ export default {
 					leaf: '#66BB6A',
 					sky: '#81D4FA',
 					sun: '#FFD54F',
+					// Additional vibrant colors
+					peach: '#FEC6A1',
+					coral: '#FF8A65',
+					amber: '#FFAB40',
+					rose: '#FF80AB',
+					mint: '#80DEEA',
+					lavender: '#B39DDB',
 				},
 			},
 			borderRadius: {
@@ -122,6 +131,18 @@ export default {
 				'pulse-gradient': {
 					'0%, 100%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200% 0' },
+					'100%': { backgroundPosition: '200% 0' }
+				},
+				'bounce-subtle': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-4px)' }
+				},
+				'sparkle': {
+					'0%, 100%': { opacity: '0', transform: 'scale(0)' },
+					'50%': { opacity: '1', transform: 'scale(1)' }
 				}
 			},
 			animation: {
@@ -130,7 +151,10 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'scale': 'scale 0.3s ease-out',
-				'pulse-gradient': 'pulse-gradient 3s ease infinite'
+				'pulse-gradient': 'pulse-gradient 3s ease infinite',
+				'shimmer': 'shimmer 2s linear infinite',
+				'bounce-subtle': 'bounce-subtle 2s ease infinite',
+				'sparkle': 'sparkle 1.5s ease infinite'
 			},
 			fontFamily: {
 				'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
@@ -139,11 +163,21 @@ export default {
 			},
 			backgroundImage: {
 				'orange-red-gradient': 'linear-gradient(90deg, #F97316, #ea384c)',
-				'orange-red-light': 'linear-gradient(90deg, rgba(249, 115, 22, 0.2), rgba(234, 56, 76, 0.2))'
+				'orange-red-light': 'linear-gradient(90deg, rgba(249, 115, 22, 0.2), rgba(234, 56, 76, 0.2))',
+				'orange-peach-gradient': 'linear-gradient(90deg, #F97316, #FEC6A1)',
+				'red-orange-gradient': 'linear-gradient(90deg, #ea384c, #F97316)',
+				'vibrant-gradient': 'linear-gradient(45deg, #F97316, #ea384c, #FEC6A1)',
+				'sunrise-gradient': 'linear-gradient(to top, #F97316, #FFD54F)',
+				'sunset-gradient': 'linear-gradient(to bottom, #ea384c, #F97316)',
 			},
 			spacing: {
 				'18': '4.5rem',
 				'22': '5.5rem',
+			},
+			boxShadow: {
+				'colorful': '0 4px 14px 0 rgba(249, 115, 22, 0.15), 0 2px 6px 0 rgba(234, 56, 76, 0.1)',
+				'glow': '0 0 15px rgba(249, 115, 22, 0.5)',
+				'inner-glow': 'inset 0 0 15px rgba(234, 56, 76, 0.2)',
 			},
 		}
 	},
