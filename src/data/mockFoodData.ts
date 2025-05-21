@@ -3,182 +3,221 @@ import { FoodAnalysisResult } from "../types/food";
 
 export const mockFoodData: FoodAnalysisResult[] = [
   {
-    name: "Apple",
+    name: "Organic Apple",
     category: "Fresh Fruit",
-    sustainabilityScore: 88,
+    imageUrl: "https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?q=80&w=200",
+    isJunkFood: false,
+    sustainabilityScore: 85,
     confidencePercentage: 95,
-    consumptionFrequency: "Daily consumption is beneficial",
-    optimalTiming: "Morning or as a midday snack",
+    consumptionFrequency: "Daily consumption is beneficial for overall health",
+    optimalTiming: "Best consumed as a mid-morning or afternoon snack",
     healthRisks: [],
+    nutritionalHighlights: [
+      "Rich in dietary fiber",
+      "Good source of vitamin C",
+      "Contains antioxidants that may reduce risk of chronic diseases",
+      "Low glycemic index helps regulate blood sugar"
+    ],
     sustainability: {
-      packaging: 95,
-      carbonFootprint: 85,
-      supplyChain: 80,
+      packaging: 90,
+      carbonFootprint: 80,
+      supplyChain: 85,
       ingredients: 100
     },
-    contextualSuggestion: "Local and in-season apples are currently available in your area, reducing carbon footprint by 60% compared to imported varieties.",
+    contextualSuggestion: "Season for local apples! Consider visiting a nearby orchard for fresher options with lower transportation emissions.",
     alternatives: [
       {
-        name: "Local Pears",
-        score: 90,
-        benefit: "In season and locally sourced"
-      },
-      {
-        name: "Oranges",
+        name: "Pear",
         score: 82,
-        benefit: "Higher Vitamin C content"
+        benefit: "Similar nutritional profile with more potassium"
       },
       {
-        name: "Berries",
-        score: 85,
-        benefit: "Higher antioxidant properties"
+        name: "Seasonal Berries",
+        score: 87,
+        benefit: "Higher antioxidant content"
+      },
+      {
+        name: "Orange",
+        score: 80,
+        benefit: "Higher vitamin C content"
       }
     ]
   },
   {
     name: "Potato Chips",
     category: "Processed Snacks",
-    sustainabilityScore: 32,
-    confidencePercentage: 92,
-    consumptionFrequency: "Limit to 1-2 times per month",
-    optimalTiming: "Occasional midday snack, not before bedtime",
+    imageUrl: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?q=80&w=200",
+    isJunkFood: true,
+    sustainabilityScore: 30,
+    confidencePercentage: 98,
+    consumptionFrequency: "Limit to 1-2 servings per month",
+    optimalTiming: "Best consumed as an occasional treat, not as a regular snack",
     healthRisks: [
-      "High sodium content linked to hypertension",
-      "Acrylamide formation during processing may increase cancer risk",
-      "Excessive consumption linked to weight gain and obesity"
+      "High in sodium which may increase blood pressure",
+      "Contains trans fats linked to heart disease",
+      "High in calories and low in nutrients",
+      "Acrylamide (formed during cooking) is potentially harmful"
     ],
     sustainability: {
       packaging: 20,
       carbonFootprint: 35,
       supplyChain: 40,
-      ingredients: 45
+      ingredients: 25
     },
-    contextualSuggestion: "Evening snacking? Try air-popped popcorn or roasted chickpeas instead for better sleep and digestion.",
+    plasticInfo: {
+      isPlastic: true,
+      decompositionTime: "Up to 500 years for complete decomposition",
+      impact: "Contributes to microplastic pollution in oceans and soil"
+    },
+    contextualSuggestion: "Try air-popped popcorn as a healthier alternative with significantly less packaging waste.",
     alternatives: [
       {
         name: "Air-popped Popcorn",
         score: 75,
-        benefit: "Lower sodium and calories"
+        benefit: "Lower in fat and sodium, higher in fiber"
       },
       {
         name: "Baked Vegetable Chips",
-        score: 60,
-        benefit: "Less oil and processing"
+        score: 65,
+        benefit: "Less oil and preservatives"
       },
       {
-        name: "Roasted Nuts",
-        score: 80,
-        benefit: "Higher protein and healthy fats"
+        name: "Rice Cakes",
+        score: 70,
+        benefit: "Low calorie, zero fat option"
       }
     ]
   },
   {
     name: "Greek Yogurt",
-    category: "Dairy",
+    category: "Dairy Products",
+    imageUrl: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=200",
+    isJunkFood: false,
     sustainabilityScore: 65,
-    confidencePercentage: 88,
-    consumptionFrequency: "3-5 times per week is optimal",
-    optimalTiming: "Breakfast or post-workout recovery",
+    confidencePercentage: 90,
+    consumptionFrequency: "Safe to consume 3-5 times per week",
+    optimalTiming: "Excellent as a breakfast option or post-workout recovery food",
     healthRisks: [
-      "High consumption may contribute to calcium imbalance for some individuals"
+      "High in saturated fat if full-fat varieties are chosen"
+    ],
+    nutritionalHighlights: [
+      "High in protein and calcium",
+      "Contains probiotics for gut health",
+      "Lower in lactose than regular yogurt",
+      "Good source of B vitamins"
     ],
     sustainability: {
-      packaging: 50,
+      packaging: 45,
       carbonFootprint: 60,
       supplyChain: 65,
-      ingredients: 75
+      ingredients: 70
     },
-    contextualSuggestion: "Morning protein boost! Add locally sourced berries for additional antioxidants.",
+    plasticInfo: {
+      isPlastic: true,
+      decompositionTime: "Up to 450 years for plastic containers",
+      impact: "Single-use plastic containers contribute significantly to landfill waste"
+    },
+    contextualSuggestion: "Consider buying larger containers to reduce plastic waste or looking for brands with recyclable paper packaging.",
     alternatives: [
       {
         name: "Coconut Yogurt",
-        score: 70,
-        benefit: "Plant-based alternative"
+        score: 75,
+        benefit: "Plant-based alternative with less environmental impact"
       },
       {
         name: "Kefir",
-        score: 75,
-        benefit: "Higher probiotic content"
+        score: 70,
+        benefit: "More diverse probiotic content"
       },
       {
-        name: "Cottage Cheese",
+        name: "Skyr",
         score: 68,
         benefit: "Higher protein content"
       }
     ]
   },
   {
-    name: "Hamburger",
-    category: "Fast Food",
+    name: "Chocolate Bar",
+    category: "Confectionery",
+    imageUrl: "https://images.unsplash.com/photo-1548907040-4b7d8a91f0e9?q=80&w=200",
+    isJunkFood: true,
     sustainabilityScore: 25,
-    confidencePercentage: 90,
-    consumptionFrequency: "Limit to once per month",
-    optimalTiming: "Occasional midday meal, not evening",
+    confidencePercentage: 95,
+    consumptionFrequency: "Limit to 1-2 small servings per week",
+    optimalTiming: "Best consumed as an afternoon treat, not near bedtime",
     healthRisks: [
-      "High saturated fat linked to cardiovascular disease",
-      "Processed meat associated with increased cancer risk",
-      "High sodium content contributes to hypertension"
+      "High sugar content linked to obesity and diabetes",
+      "May contribute to dental issues",
+      "Contains caffeine which can affect sleep quality"
     ],
     sustainability: {
-      packaging: 30,
-      carbonFootprint: 15,
-      supplyChain: 20,
+      packaging: 20,
+      carbonFootprint: 25,
+      supplyChain: 15,
       ingredients: 25
     },
-    contextualSuggestion: "Consider local plant-based burgers which use 95% less water and 75% less land than beef burgers.",
+    plasticInfo: {
+      isPlastic: true,
+      decompositionTime: "Up to 200 years for wrappers with mixed materials",
+      impact: "Non-recyclable wrappers contribute to landfill waste and pollution"
+    },
+    contextualSuggestion: "Look for fair trade chocolate with minimal packaging, or try making homemade treats with raw cacao.",
     alternatives: [
       {
-        name: "Veggie Burger",
-        score: 70,
-        benefit: "Lower environmental impact"
+        name: "Dark Chocolate (70%+)",
+        score: 60,
+        benefit: "Higher in antioxidants, lower in sugar"
       },
       {
-        name: "Grilled Chicken Sandwich",
-        score: 55,
-        benefit: "Leaner protein option"
-      },
-      {
-        name: "Portobello Mushroom Burger",
+        name: "Fruit & Nut Mix",
         score: 85,
-        benefit: "Plant-based whole food option"
+        benefit: "Natural sugars with added protein and healthy fats"
+      },
+      {
+        name: "Cacao Nibs",
+        score: 80,
+        benefit: "Unprocessed form with no added sugar"
       }
     ]
   },
   {
-    name: "Cola Soda",
-    category: "Sugar-Sweetened Beverages",
-    sustainabilityScore: 20,
-    confidencePercentage: 98,
-    consumptionFrequency: "Avoid or limit to once per month",
-    optimalTiming: "No optimal time - best replaced with water",
-    healthRisks: [
-      "High sugar content linked to obesity and diabetes",
-      "Phosphoric acid may contribute to calcium loss",
-      "Caffeine may disrupt sleep patterns",
-      "Regular consumption linked to dental erosion"
+    name: "Spinach",
+    category: "Leafy Greens",
+    imageUrl: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?q=80&w=200",
+    isJunkFood: false,
+    sustainabilityScore: 90,
+    confidencePercentage: 97,
+    consumptionFrequency: "Can be consumed daily for optimal health benefits",
+    optimalTiming: "Versatile for any meal; particularly good for lunch or dinner",
+    healthRisks: [],
+    nutritionalHighlights: [
+      "Excellent source of iron and calcium",
+      "High in vitamins A, C, K, and folate",
+      "Contains antioxidants that support eye health",
+      "Low in calories but nutrient-dense"
     ],
     sustainability: {
-      packaging: 15,
-      carbonFootprint: 25,
-      supplyChain: 30,
-      ingredients: 10
+      packaging: 85,
+      carbonFootprint: 95,
+      supplyChain: 90,
+      ingredients: 100
     },
-    contextualSuggestion: "Afternoon energy slump? Try infused water with local mint and cucumber instead of caffeine and sugar.",
+    contextualSuggestion: "Try growing your own spinach in a small container garden for the freshest and most sustainable option.",
     alternatives: [
       {
-        name: "Sparkling Water",
-        score: 80,
-        benefit: "Zero calories and sugar"
+        name: "Kale",
+        score: 88,
+        benefit: "Higher in vitamin K and antioxidants"
       },
       {
-        name: "Herbal Tea",
-        score: 90,
-        benefit: "Potential health benefits"
+        name: "Swiss Chard",
+        score: 85,
+        benefit: "More diverse mineral content"
       },
       {
-        name: "Infused Water",
-        score: 95,
-        benefit: "Natural flavoring from fruits"
+        name: "Arugula",
+        score: 82,
+        benefit: "Distinctive peppery flavor with similar benefits"
       }
     ]
   }
