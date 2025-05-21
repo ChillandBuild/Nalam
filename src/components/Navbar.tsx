@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,14 +10,15 @@ const Navbar = () => {
     <nav className="py-4 w-full bg-background/80 backdrop-blur-sm sticky top-0 z-50">
       <div className="container px-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <a href="#" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <span className="w-10 h-10 rounded-full bg-gradient-to-br from-nalam-green to-nalam-leaf flex items-center justify-center text-white font-bold text-xl">N</span>
             <span className="text-2xl font-display font-bold text-nalam-green">Nalam</span>
-          </a>
+          </Link>
         </div>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
+          <Link to="/search" className="text-foreground hover:text-nalam-green transition-colors">Search</Link>
           <a href="#features" className="text-foreground hover:text-nalam-green transition-colors">Features</a>
           <a href="#how-it-works" className="text-foreground hover:text-nalam-green transition-colors">How It Works</a>
           <a href="#benefits" className="text-foreground hover:text-nalam-green transition-colors">Benefits</a>
@@ -53,6 +55,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute w-full bg-background shadow-lg z-50 animate-fade-in">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-4">
+            <Link to="/search" className="text-foreground hover:text-nalam-green transition-colors py-2">Search</Link>
             <a href="#features" className="text-foreground hover:text-nalam-green transition-colors py-2">Features</a>
             <a href="#how-it-works" className="text-foreground hover:text-nalam-green transition-colors py-2">How It Works</a>
             <a href="#benefits" className="text-foreground hover:text-nalam-green transition-colors py-2">Benefits</a>

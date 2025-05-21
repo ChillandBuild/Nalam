@@ -78,6 +78,7 @@ export default {
 					leaf: '#66BB6A',
 					sky: '#81D4FA',
 					sun: '#FFD54F',
+					red: '#F44336'
 				},
 			},
 			borderRadius: {
