@@ -15,7 +15,6 @@ const Navbar = () => {
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] flex items-center justify-center text-white">
               <Heart className="w-5 h-5 fill-white" />
             </div>
-            <span className="text-2xl font-['Hugh_is_Life'] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F97316] to-[#ea384c]">Nalam</span>
           </Link>
         </div>
         
@@ -98,3 +97,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
