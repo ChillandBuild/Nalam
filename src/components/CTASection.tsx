@@ -19,7 +19,7 @@ const CTASection = () => {
   return (
     <section className="py-20">
       <div className="container px-4 mx-auto">
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-nalam-green to-nalam-green-dark rounded-3xl overflow-hidden shadow-xl">
+        <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#F97316] to-[#ea384c] rounded-3xl overflow-hidden shadow-xl">
           <div className="p-8 md:p-12 text-white">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
@@ -46,7 +46,7 @@ const CTASection = () => {
                     </div>
                     <Button 
                       type="submit" 
-                      className="bg-white text-nalam-green hover:bg-white/90 font-medium"
+                      className="bg-white text-[#F97316] hover:bg-white/90 font-medium"
                     >
                       Join Waitlist
                     </Button>
@@ -75,36 +75,36 @@ const CTASection = () => {
                     <div className="bg-white rounded-xl p-4 -rotate-3 shadow-sm">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-full bg-nalam-green flex items-center justify-center text-white font-bold">N</div>
+                          <div className="w-8 h-8 rounded-full bg-[#F97316] flex items-center justify-center text-white font-bold">N</div>
                           <span className="font-medium">Nalam</span>
                         </div>
-                        <span className="text-xs px-2 py-1 bg-nalam-green/10 text-nalam-green rounded-full">Beta</span>
+                        <span className="text-xs px-2 py-1 bg-[#F97316]/10 text-[#F97316] rounded-full">Beta</span>
                       </div>
                       
                       <div className="space-y-2">
                         <div className="text-xs font-medium">Your Impact This Month</div>
-                        <div className="bg-nalam-green/5 p-3 rounded-lg grid grid-cols-2 gap-2 text-center">
+                        <div className="bg-[#F97316]/5 p-3 rounded-lg grid grid-cols-2 gap-2 text-center">
                           <div>
-                            <div className="text-sm font-medium text-nalam-green">12</div>
+                            <div className="text-sm font-medium text-[#F97316]">12</div>
                             <div className="text-xs text-muted-foreground">Eco Swaps</div>
                           </div>
                           <div>
-                            <div className="text-sm font-medium text-nalam-green">32 kg</div>
+                            <div className="text-sm font-medium text-[#F97316]">32 kg</div>
                             <div className="text-xs text-muted-foreground">CO₂ Saved</div>
                           </div>
                           <div>
-                            <div className="text-sm font-medium text-nalam-green">8</div>
+                            <div className="text-sm font-medium text-[#F97316]">8</div>
                             <div className="text-xs text-muted-foreground">Healthier Meals</div>
                           </div>
                           <div>
-                            <div className="text-sm font-medium text-nalam-green">360</div>
+                            <div className="text-sm font-medium text-[#F97316]">360</div>
                             <div className="text-xs text-muted-foreground">EcoPoints</div>
                           </div>
                         </div>
                         
                         <div className="flex items-center gap-2">
-                          <div className="w-full h-2 bg-nalam-green/20 rounded-full overflow-hidden">
-                            <div className="h-full bg-nalam-green w-3/4 rounded-full"></div>
+                          <div className="w-full h-2 bg-[#F97316]/20 rounded-full overflow-hidden">
+                            <div className="h-full bg-[#F97316] w-3/4 rounded-full"></div>
                           </div>
                           <span className="text-xs font-medium">Next Level: 75%</span>
                         </div>
