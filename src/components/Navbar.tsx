@@ -22,19 +22,8 @@ const Navbar = () => {
           </Link>
         </div>
         
-        {/* Navigation Links with Home and Search prominently displayed */}
+        {/* Navigation Links - Home and Search buttons removed from middle */}
         <div className="hidden md:flex items-center gap-6">
-          <div className="flex items-center gap-4 mr-4">
-            <Link to="/" className="flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white rounded-full hover:opacity-90 transition-colors">
-              <Home size={18} />
-              <span>Home</span>
-            </Link>
-            <Link to="/search" className="flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white rounded-full hover:opacity-90 transition-colors">
-              <Search size={18} />
-              <span>Search</span>
-            </Link>
-          </div>
-          
           <a href="#features" className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium">Features</a>
           <a href="#how-it-works" className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium">How It Works</a>
           <a href="#benefits" className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium">Benefits</a>
@@ -71,16 +60,6 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute w-full bg-white shadow-lg z-50 animate-fade-in">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-4">
-            <div className="flex gap-3 mb-2">
-              <Link to="/" className="flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white rounded-full hover:opacity-90 transition-colors flex-1 justify-center">
-                <Home size={18} />
-                <span>Home</span>
-              </Link>
-              <Link to="/search" className="flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white rounded-full hover:opacity-90 transition-colors flex-1 justify-center">
-                <Search size={18} />
-                <span>Search</span>
-              </Link>
-            </div>
             <a href="#features" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium">Features</a>
             <a href="#how-it-works" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium">How It Works</a>
             <a href="#benefits" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium">Benefits</a>

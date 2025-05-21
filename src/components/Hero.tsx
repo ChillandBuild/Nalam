@@ -34,9 +34,14 @@ const Hero = () => {
     <section className="hero-gradient pt-10 pb-20 md:pt-20 md:pb-32 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-16 h-16 rounded-full bg-gradient-to-r from-nalam-red to-nalam-sun/60 blur-xl opacity-30 animate-float"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 rounded-full bg-gradient-to-r from-nalam-sun to-nalam-red/60 blur-xl opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-20 left-1/3 w-20 h-20 rounded-full bg-gradient-to-r from-nalam-red/40 to-nalam-sun/40 blur-xl opacity-30 animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-[#f8f8f8] opacity-80"></div>
+        <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-[#F97316]/10 blur-xl animate-float"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 rounded-full bg-[#ea384c]/10 blur-xl animate-float" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-40 left-1/4 w-40 h-40 rounded-full bg-[#F97316]/20 blur-xl animate-float" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute bottom-60 right-1/4 w-36 h-36 rounded-full bg-[#ea384c]/10 blur-xl animate-float" style={{animationDelay: '2.2s'}}></div>
+        
+        {/* Subtle patterns */}
+        <div className="absolute inset-0 bright-dots"></div>
       </div>
 
       <div className="container px-4 mx-auto">
@@ -47,23 +52,21 @@ const Hero = () => {
             </h2>
             
             <div className="flex flex-col gap-4 w-full">
-              <div className="flex justify-between items-center">
-                <Link to="/" className="flex items-center gap-2 bg-gradient-to-r from-[#F97316] to-[#ea384c]/80 text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M9 22V12h6v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  Home
+              {/* Home and Search buttons moved to the top of hero for better visibility on mobile */}
+              <div className="flex justify-center md:justify-start gap-3">
+                <Link to="/" className="flex items-center gap-2 bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
+                  <Home size={20} />
+                  <span>Home</span>
                 </Link>
                 
-                <Link to="/search" className="flex items-center gap-2 bg-gradient-to-r from-[#ea384c]/80 to-[#F97316] text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
+                <Link to="/search" className="flex items-center gap-2 bg-gradient-to-r from-[#ea384c] to-[#F97316] text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
                   <Search size={20} />
-                  Search Page
+                  <span>Search</span>
                 </Link>
               </div>
               
               {/* Main card with curvy design */}
-              <Card className="bg-white overflow-hidden border-none shadow-xl animate-scale mt-4 group">
+              <Card className="bg-white overflow-hidden border-none shadow-xl animate-scale mt-4 group rounded-[2rem]">
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-[#F97316]/20 to-[#ea384c]/20 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500"></div>
                 <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-[#F97316]/20 to-[#ea384c]/20 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500"></div>
                 
@@ -111,14 +114,14 @@ const Hero = () => {
                 <div className="pt-6">
                   <p className="text-sm text-muted-foreground mb-3">Available on</p>
                   <div className="flex gap-3 justify-center md:justify-start">
-                    <div className="bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white rounded-lg px-4 py-2 flex items-center gap-2">
+                    <div className="bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white rounded-[1rem] px-4 py-2 flex items-center gap-2">
                       <Apple size={24} />
                       <div>
                         <div className="text-xs">Download on the</div>
                         <div className="font-semibold">App Store</div>
                       </div>
                     </div>
-                    <div className="bg-gradient-to-r from-[#ea384c] to-[#F97316] text-white rounded-lg px-4 py-2 flex items-center gap-2">
+                    <div className="bg-gradient-to-r from-[#ea384c] to-[#F97316] text-white rounded-[1rem] px-4 py-2 flex items-center gap-2">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 20.5V3.5C3 2.4 3.9 1.5 5 1.5H19C20.1 1.5 21 2.4 21 3.5V20.5C21 21.6 20.1 22.5 19 22.5H5C3.9 22.5 3 21.6 3 20.5ZM12 17L18 12L12 7V17Z" fill="white"/>
                       </svg>
@@ -140,14 +143,17 @@ const Hero = () => {
                 <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-[#F97316]/30 to-[#ea384c]/20 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500"></div>
                 <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-gradient-to-tr from-[#F97316]/20 to-[#ea384c]/30 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500"></div>
                 
-                <CardHeader className="p-4 bg-gradient-to-r from-[#F97316]/20 to-[#ea384c]/20 border-b border-[#F97316]/10 relative z-10">
-                  <CardTitle className="font-display font-semibold text-lg text-[#ea384c]">Popular Food Analysis</CardTitle>
+                <CardHeader className="rounded-t-[2rem] bg-gradient-to-r from-[#F97316] to-[#ea384c] p-6">
+                  <CardTitle className="text-white flex items-center gap-2">
+                    <Sparkles className="h-6 w-6 animate-pulse" />
+                    <span>Popular Food Analysis</span>
+                  </CardTitle>
                 </CardHeader>
                 
-                <CardContent className="p-5 relative z-10">
+                <CardContent className="p-6 relative z-10">
                   <div className="space-y-5">
                     {/* Cold Coffee */}
-                    <div className="bg-white rounded-xl p-4 shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                    <div className="bg-gradient-to-br from-white to-[#F97316]/10 p-4 rounded-[1.5rem] shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in">
                       <div className="flex justify-between items-start">
                         <div>
                           <h4 className="font-semibold text-[#F97316]">Cold Coffee</h4>
@@ -170,13 +176,13 @@ const Hero = () => {
                     </div>
                     
                     {/* Instant Noodles */}
-                    <div className="bg-white rounded-xl p-4 shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in" style={{animationDelay: '0.2s'}}>
+                    <div className="bg-gradient-to-br from-white to-[#ea384c]/10 p-4 rounded-[1.5rem] shadow-sm border border-[#ea384c]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in" style={{animationDelay: '0.2s'}}>
                       <div className="flex justify-between items-start">
                         <div>
-                          <h4 className="font-semibold text-[#F97316]">Instant Noodles</h4>
+                          <h4 className="font-semibold text-[#ea384c]">Instant Noodles</h4>
                           <p className="text-xs text-muted-foreground">Junk Food</p>
                         </div>
-                        <span className="bg-[#ea384c]/10 text-[#ea384c] text-xs px-2 py-1 rounded-full">
+                        <span className="bg-[#F97316]/10 text-[#F97316] text-xs px-2 py-1 rounded-full">
                           340 cal
                         </span>
                       </div>
@@ -197,7 +203,7 @@ const Hero = () => {
                   <div className="space-y-4 mt-6 border-t border-[#F97316]/10 pt-4">
                     <div className="flex gap-2">
                       <Button 
-                        className="flex-1 bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white"
+                        className="flex-1 bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white rounded-[1rem]"
                         onClick={() => setShowSearch(!showSearch)}
                       >
                         <Search size={18} className="mr-2" />
@@ -205,7 +211,7 @@ const Hero = () => {
                       </Button>
                       
                       <Button 
-                        className="flex-1 bg-gradient-to-r from-[#ea384c] to-[#F97316] hover:opacity-90 text-white"
+                        className="flex-1 bg-gradient-to-r from-[#ea384c] to-[#F97316] hover:opacity-90 text-white rounded-[1rem]"
                         onClick={() => setShowFactOfDay(!showFactOfDay)}
                       >
                         <Coffee size={18} className="mr-2" />
@@ -214,7 +220,7 @@ const Hero = () => {
                     </div>
                     
                     {showFactOfDay && (
-                      <div className="bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 rounded-xl p-4 border border-[#F97316]/30 animate-scale">
+                      <div className="bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 rounded-[1.5rem] p-4 border border-[#F97316]/30 animate-scale">
                         <h3 className="font-display font-semibold text-[#ea384c] mb-2 flex items-center gap-2">
                           <Sparkles className="h-4 w-4" />
                           Food Fact of the Day
@@ -224,7 +230,7 @@ const Hero = () => {
                     )}
                     
                     {showSearch && (
-                      <div className="bg-white rounded-xl shadow-md p-4 border border-[#F97316]/30 animate-scale">
+                      <div className="bg-white rounded-[1.5rem] shadow-md p-4 border border-[#F97316]/30 animate-scale">
                         <SearchForm onSearchResult={handleSearchResult} setIsLoading={setIsLoading} />
                       </div>
                     )}
@@ -240,7 +246,7 @@ const Hero = () => {
                     )}
                     
                     {!isLoading && searchResult && (
-                      <div className="bg-white rounded-xl shadow-md p-4 border border-[#F97316]/30 animate-scale">
+                      <div className="bg-gradient-to-r from-[#F97316]/5 to-[#ea384c]/5 rounded-[1.5rem] shadow-md p-4 border border-[#F97316]/30 animate-scale">
                         <h3 className="text-xl font-display font-bold text-[#ea384c] mb-4">{searchResult.name}</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
@@ -265,10 +271,10 @@ const Hero = () => {
                     )}
                   </div>
                   
-                  {/* View More Button */}
+                  {/* View More Button with more curved design */}
                   <div className="text-center mt-4">
                     <Link to="/search">
-                      <Button variant="outline" className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 w-full">
+                      <Button variant="outline" className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 w-full rounded-[1rem]">
                         View More Food Analysis
                       </Button>
                     </Link>
