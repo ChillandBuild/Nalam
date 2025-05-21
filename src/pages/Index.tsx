@@ -33,7 +33,7 @@ const Index = () => {
       <Footer />
       
       {/* Decorative elements */}
-      <div className="fixed bottom-5 right-5 w-16 h-16 rounded-full bg-black flex items-center justify-center text-white cursor-pointer shadow-lg animate-bounce-soft">
+      <div className="fixed bottom-5 right-5 w-16 h-16 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] flex items-center justify-center text-white cursor-pointer shadow-lg animate-bounce-soft">
         <span className="font-hugh text-xl">N</span>
       </div>
     </div>

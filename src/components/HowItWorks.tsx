@@ -1,4 +1,3 @@
-
 import { Apple, Sandwich, Carrot } from "lucide-react";
 
 const HowItWorks = () => {
@@ -6,7 +5,7 @@ const HowItWorks = () => {
     <section id="how-it-works" className="py-20 bg-[#F97316]/5">
       <div className="container px-4 mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">How Nalam Works</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#F97316] to-[#ea384c]">How Nalam Works</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Making sustainable and healthy choices has never been easier. Nalam guides you every step of the way.
           </p>
@@ -22,8 +21,8 @@ const HowItWorks = () => {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
               <div className="md:w-1/2 flex justify-end order-1 md:order-none">
                 <div className="bg-white rounded-xl shadow-lg p-6 max-w-md">
-                  <div className="w-12 h-12 bg-[#F97316] rounded-full flex items-center justify-center text-white font-bold mb-4">1</div>
-                  <h3 className="text-xl font-semibold mb-3">Scan Products or Upload Food Images</h3>
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#F97316] to-[#ea384c] rounded-full flex items-center justify-center text-white font-bold mb-4">1</div>
+                  <h3 className="text-xl font-semibold mb-3 text-[#F97316]">Scan Products or Upload Food Images</h3>
                   <p className="text-muted-foreground mb-4">
                     Use your phone camera to scan product barcodes or upload images of your meals. Nalam instantly recognizes what you're looking at.
                   </p>
@@ -42,7 +41,7 @@ const HowItWorks = () => {
                 </div>
               </div>
               <div className="md:w-1/2 md:pl-12 flex justify-center md:justify-start">
-                <div className="w-24 h-24 rounded-full bg-[#F97316] flex items-center justify-center shadow-lg">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] flex items-center justify-center shadow-lg">
                   <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="3" width="18" height="18" rx="2"></rect>
                     <path d="M7 7h.01"></path>

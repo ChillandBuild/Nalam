@@ -75,8 +75,8 @@ const CTASection = () => {
                     <div className="bg-white rounded-xl p-4 -rotate-3 shadow-sm">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-full bg-[#F97316] flex items-center justify-center text-white font-bold">N</div>
-                          <span className="font-medium">Nalam</span>
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] flex items-center justify-center text-white font-bold">N</div>
+                          <span className="font-medium text-[#F97316]">Nalam</span>
                         </div>
                         <span className="text-xs px-2 py-1 bg-[#F97316]/10 text-[#F97316] rounded-full">Beta</span>
                       </div>
@@ -104,7 +104,7 @@ const CTASection = () => {
                         
                         <div className="flex items-center gap-2">
                           <div className="w-full h-2 bg-[#F97316]/20 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#F97316] w-3/4 rounded-full"></div>
+                            <div className="h-full bg-gradient-to-r from-[#F97316] to-[#ea384c] w-3/4 rounded-full"></div>
                           </div>
                           <span className="text-xs font-medium">Next Level: 75%</span>
                         </div>
