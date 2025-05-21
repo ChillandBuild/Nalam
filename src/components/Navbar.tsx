@@ -2,13 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart } from "lucide-react";
+import { Heart, Home, Search } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="py-4 w-full bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+    <nav className="py-4 w-full bg-white shadow-sm sticky top-0 z-50">
       <div className="container px-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2">
@@ -19,13 +19,23 @@ const Navbar = () => {
           </Link>
         </div>
         
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link to="/search" className="text-foreground hover:text-[#F97316] transition-colors">Search</Link>
-          <a href="#features" className="text-foreground hover:text-[#F97316] transition-colors">Features</a>
-          <a href="#how-it-works" className="text-foreground hover:text-[#F97316] transition-colors">How It Works</a>
-          <a href="#benefits" className="text-foreground hover:text-[#F97316] transition-colors">Benefits</a>
-          <a href="#faq" className="text-foreground hover:text-[#F97316] transition-colors">FAQ</a>
+        {/* Navigation Links with Home and Search prominently displayed */}
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex items-center gap-4 mr-4">
+            <Link to="/" className="flex items-center gap-1 px-3 py-1.5 bg-[#F97316] text-white rounded-full hover:bg-[#F97316]/90 transition-colors">
+              <Home size={18} />
+              <span>Home</span>
+            </Link>
+            <Link to="/search" className="flex items-center gap-1 px-3 py-1.5 bg-[#ea384c] text-white rounded-full hover:bg-[#ea384c]/90 transition-colors">
+              <Search size={18} />
+              <span>Search</span>
+            </Link>
+          </div>
+          
+          <a href="#features" className="text-gray-800 hover:text-[#F97316] transition-colors font-medium">Features</a>
+          <a href="#how-it-works" className="text-gray-800 hover:text-[#F97316] transition-colors font-medium">How It Works</a>
+          <a href="#benefits" className="text-gray-800 hover:text-[#F97316] transition-colors font-medium">Benefits</a>
+          <a href="#faq" className="text-gray-800 hover:text-[#F97316] transition-colors font-medium">FAQ</a>
         </div>
         
         <div className="hidden md:flex items-center gap-4">
@@ -39,7 +49,7 @@ const Navbar = () => {
         
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-foreground"
+          className="md:hidden text-gray-800"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
@@ -56,13 +66,22 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute w-full bg-background shadow-lg z-50 animate-fade-in">
+        <div className="md:hidden absolute w-full bg-white shadow-lg z-50 animate-fade-in">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-4">
-            <Link to="/search" className="text-foreground hover:text-[#F97316] transition-colors py-2">Search</Link>
-            <a href="#features" className="text-foreground hover:text-[#F97316] transition-colors py-2">Features</a>
-            <a href="#how-it-works" className="text-foreground hover:text-[#F97316] transition-colors py-2">How It Works</a>
-            <a href="#benefits" className="text-foreground hover:text-[#F97316] transition-colors py-2">Benefits</a>
-            <a href="#faq" className="text-foreground hover:text-[#F97316] transition-colors py-2">FAQ</a>
+            <div className="flex gap-3 mb-2">
+              <Link to="/" className="flex items-center gap-1 px-3 py-1.5 bg-[#F97316] text-white rounded-full hover:bg-[#F97316]/90 transition-colors flex-1 justify-center">
+                <Home size={18} />
+                <span>Home</span>
+              </Link>
+              <Link to="/search" className="flex items-center gap-1 px-3 py-1.5 bg-[#ea384c] text-white rounded-full hover:bg-[#ea384c]/90 transition-colors flex-1 justify-center">
+                <Search size={18} />
+                <span>Search</span>
+              </Link>
+            </div>
+            <a href="#features" className="text-gray-800 hover:text-[#F97316] transition-colors py-2 font-medium">Features</a>
+            <a href="#how-it-works" className="text-gray-800 hover:text-[#F97316] transition-colors py-2 font-medium">How It Works</a>
+            <a href="#benefits" className="text-gray-800 hover:text-[#F97316] transition-colors py-2 font-medium">Benefits</a>
+            <a href="#faq" className="text-gray-800 hover:text-[#F97316] transition-colors py-2 font-medium">FAQ</a>
             <div className="flex flex-col gap-2 pt-2">
               <Button variant="outline" className="border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white w-full">
                 Sign In

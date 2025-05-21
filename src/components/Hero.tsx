@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Apple, Egg, Heart, Coffee, Search } from "lucide-react";
+import { Apple, Heart, Coffee, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import { mockFoodData } from "../data/mockFoodData";
@@ -50,17 +50,8 @@ const Hero = () => {
               <p className="text-lg text-nalam-earth-dark font-medium">
                 Making sustainable choices easier for everyone.
               </p>
-              <p className="text-sm text-nalam-earth flex items-center gap-2">
-                Built with <Heart size={16} className="text-[#F97316] fill-[#F97316]" /> for a healthier planet.
-              </p>
             </div>
 
-            <div className="py-2 px-4 bg-gradient-to-r from-nalam-red/20 to-nalam-sun/30 rounded-lg border border-nalam-earth/20 my-4">
-              <p className="text-lg md:text-2xl font-display font-semibold italic text-nalam-earth-dark">
-                "Eat This Way, Not That Way"
-              </p>
-            </div>
-            
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-[#F97316] to-[#ea384c] bg-clip-text text-transparent">
               Make better choices for your health and the planet
             </h2>
