@@ -63,12 +63,17 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom Nalam theme colors with new orange and red
+				// Enhanced Nalam theme colors with orange and red
 				nalam: {
-					green: {
-						light: '#8BC34A',
-						DEFAULT: '#4CAF50',
-						dark: '#2E7D32',
+					orange: {
+						light: '#FFEDD5',
+						DEFAULT: '#F97316',
+						dark: '#C2410C',
+					},
+					red: {
+						light: '#FEE2E2',
+						DEFAULT: '#ea384c',
+						dark: '#B91C1C',
 					},
 					earth: {
 						light: '#D7CCC8',
@@ -78,8 +83,6 @@ export default {
 					leaf: '#66BB6A',
 					sky: '#81D4FA',
 					sun: '#FFD54F',
-					red: '#F44336',
-					orange: '#F97316'
 				},
 			},
 			borderRadius: {
@@ -115,6 +118,10 @@ export default {
 				'scale': {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'pulse-gradient': {
+					'0%, 100%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' }
 				}
 			},
 			animation: {
@@ -122,12 +129,21 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'float': 'float 3s ease-in-out infinite',
-				'scale': 'scale 0.3s ease-out'
+				'scale': 'scale 0.3s ease-out',
+				'pulse-gradient': 'pulse-gradient 3s ease infinite'
 			},
 			fontFamily: {
 				'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
 				'display': ['Poppins', 'ui-sans-serif', 'system-ui'],
 				'hugh': ['"Hugh is Life"', 'cursive']
+			},
+			backgroundImage: {
+				'orange-red-gradient': 'linear-gradient(90deg, #F97316, #ea384c)',
+				'orange-red-light': 'linear-gradient(90deg, rgba(249, 115, 22, 0.2), rgba(234, 56, 76, 0.2))'
+			},
+			spacing: {
+				'18': '4.5rem',
+				'22': '5.5rem',
 			},
 		}
 	},
