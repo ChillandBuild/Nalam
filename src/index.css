@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Hugh is Life font */
@@ -182,6 +181,16 @@
     @apply absolute inset-0 opacity-10;
     background: linear-gradient(45deg, #F97316, #ea384c, #FEC6A1);
     z-index: -1;
+  }
+  
+  /* Orange and red themed grid container - Added for the grid styling */
+  .py-12.grid.grid-cols-1.md\:grid-cols-4.gap-8 {
+    @apply bg-gradient-to-br from-[#F97316]/10 to-[#ea384c]/10 rounded-3xl p-8 border border-[#F97316]/20;
+  }
+  
+  /* Additional child element styling for the grid items */
+  .py-12.grid.grid-cols-1.md\:grid-cols-4.gap-8 > div {
+    @apply bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-[#F97316]/10 p-6 hover:scale-[1.02];
   }
 }
 
