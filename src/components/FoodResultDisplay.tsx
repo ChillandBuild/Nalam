@@ -2,6 +2,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { FoodAnalysisResult } from "../types/food";
+import { Leaf, Carrot } from "lucide-react";
 
 interface FoodResultDisplayProps {
   result: FoodAnalysisResult;
@@ -18,11 +19,16 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
   
   return (
     <div className="max-w-3xl mx-auto space-y-8">
-      <Card className="overflow-hidden">
-        <CardHeader className="bg-gradient-to-r from-nalam-green/10 to-nalam-leaf/10">
+      <Card className="overflow-hidden border-nalam-green/20">
+        <CardHeader className="bg-gradient-to-r from-nalam-green/10 to-nalam-leaf/20">
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-2xl">{result.name}</CardTitle>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                {result.name} 
+                <span className="text-base bg-nalam-green-light/20 px-2 py-0.5 rounded text-nalam-green italic">
+                  Eat This Way
+                </span>
+              </CardTitle>
               <CardDescription>{result.category}</CardDescription>
             </div>
             <div className="text-right">
@@ -41,13 +47,16 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
         
         <CardContent className="pt-6 pb-2">
           <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3 text-nalam-green">Consumption Guide</h3>
+            <div className="bg-gradient-to-br from-white to-nalam-sky/10 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3 text-nalam-green flex items-center gap-2">
+                <Leaf size={20} className="text-nalam-green" />
+                Consumption Guide
+              </h3>
               
               <div className="space-y-4">
                 <div>
                   <h4 className="font-medium mb-1 flex items-center">
-                    <span className="w-3 h-3 rounded-full bg-nalam-green mr-2"></span>
+                    <span className="w-3 h-3 rounded-full bg-gradient-to-br from-nalam-green to-nalam-leaf mr-2"></span>
                     Recommended Frequency
                   </h4>
                   <p className="text-sm ml-5">{result.consumptionFrequency}</p>
@@ -55,7 +64,7 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
                 
                 <div>
                   <h4 className="font-medium mb-1 flex items-center">
-                    <span className="w-3 h-3 rounded-full bg-nalam-green mr-2"></span>
+                    <span className="w-3 h-3 rounded-full bg-gradient-to-br from-nalam-green to-nalam-leaf mr-2"></span>
                     Optimal Timing
                   </h4>
                   <p className="text-sm ml-5">{result.optimalTiming}</p>
@@ -63,7 +72,7 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
                 
                 <div>
                   <h4 className="font-medium mb-1 flex items-center">
-                    <span className="w-3 h-3 rounded-full bg-nalam-red mr-2"></span>
+                    <span className="w-3 h-3 rounded-full bg-gradient-to-r from-nalam-red to-red-400 mr-2"></span>
                     Health Risks
                   </h4>
                   <ul className="list-disc text-sm ml-8 space-y-1">
@@ -75,8 +84,11 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
               </div>
             </div>
             
-            <div>
-              <h3 className="text-lg font-semibold mb-3 text-nalam-green">Sustainability Metrics</h3>
+            <div className="bg-gradient-to-br from-white to-nalam-sun/10 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3 text-nalam-green flex items-center gap-2">
+                <Carrot size={20} className="text-nalam-leaf" />
+                Sustainability Metrics
+              </h3>
               
               <div className="space-y-3">
                 <div className="flex items-center">
@@ -84,7 +96,7 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
                   <div className="flex-1">
                     <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-nalam-green" 
+                        className="h-full bg-gradient-to-r from-nalam-green to-nalam-leaf" 
                         style={{ width: `${result.sustainability.packaging}%` }}
                       ></div>
                     </div>
@@ -97,7 +109,7 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
                   <div className="flex-1">
                     <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-nalam-green" 
+                        className="h-full bg-gradient-to-r from-nalam-green to-nalam-leaf" 
                         style={{ width: `${result.sustainability.carbonFootprint}%` }}
                       ></div>
                     </div>
@@ -110,7 +122,7 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
                   <div className="flex-1">
                     <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-nalam-green" 
+                        className="h-full bg-gradient-to-r from-nalam-green to-nalam-leaf" 
                         style={{ width: `${result.sustainability.supplyChain}%` }}
                       ></div>
                     </div>
@@ -123,7 +135,7 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
                   <div className="flex-1">
                     <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-nalam-green" 
+                        className="h-full bg-gradient-to-r from-nalam-green to-nalam-leaf" 
                         style={{ width: `${result.sustainability.ingredients}%` }}
                       ></div>
                     </div>
@@ -135,22 +147,25 @@ const FoodResultDisplay = ({ result }: FoodResultDisplayProps) => {
           </div>
           
           {result.contextualSuggestion && (
-            <div className="mt-6 bg-nalam-earth-light/30 p-4 rounded-lg">
+            <div className="mt-6 bg-gradient-to-r from-nalam-earth-light/30 to-nalam-sun/10 p-4 rounded-lg border border-nalam-earth-light/30">
               <h4 className="font-medium mb-2 text-nalam-earth-dark">Contextual Suggestion</h4>
               <p className="text-sm">{result.contextualSuggestion}</p>
             </div>
           )}
         </CardContent>
         
-        <CardFooter className="flex-col items-start border-t pt-6">
-          <h3 className="text-lg font-semibold mb-3 text-nalam-green">Healthier Alternatives</h3>
+        <CardFooter className="flex-col items-start border-t pt-6 bg-gradient-to-br from-white to-nalam-green-light/10">
+          <h3 className="text-lg font-semibold mb-3 text-nalam-green flex items-center gap-2">
+            <span className="text-red-500 line-through text-sm">Not That Way</span>
+            Healthier Alternatives
+          </h3>
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {result.alternatives.map((alt, index) => (
-              <div key={index} className="bg-muted p-3 rounded-lg hover:shadow-md transition-shadow duration-200">
+              <div key={index} className="bg-gradient-to-br from-nalam-green-light/10 to-nalam-sun/10 p-3 rounded-lg hover:shadow-md transition-shadow duration-200 border border-nalam-green-light/20">
                 <h4 className="font-medium">{alt.name}</h4>
                 <div className="flex items-center text-xs mt-1">
                   <span className="mr-1">Score:</span>
-                  <Badge className="bg-nalam-green text-white">{alt.score}/100</Badge>
+                  <Badge className="bg-gradient-to-r from-nalam-green to-nalam-leaf text-white">{alt.score}/100</Badge>
                 </div>
                 <p className="text-xs text-muted-foreground mt-2">{alt.benefit}</p>
               </div>
