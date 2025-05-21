@@ -18,6 +18,11 @@ export interface PlasticInfo {
   impact: string;
 }
 
+export interface BannedInfo {
+  countries: string[];
+  reasons: string[];
+}
+
 export interface FoodAnalysisResult {
   name: string;
   category: string;
@@ -33,4 +38,5 @@ export interface FoodAnalysisResult {
   plasticInfo?: PlasticInfo; // Only for items with plastic packaging
   contextualSuggestion?: string;
   alternatives: FoodAlternative[];
+  bannedInfo?: BannedInfo; // Information about where this food is banned
 }

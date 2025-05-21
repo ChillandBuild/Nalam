@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom Nalam theme colors
+				// Custom Nalam theme colors with new orange and red
 				nalam: {
 					green: {
 						light: '#8BC34A',
@@ -78,7 +78,8 @@ export default {
 					leaf: '#66BB6A',
 					sky: '#81D4FA',
 					sun: '#FFD54F',
-					red: '#F44336'
+					red: '#F44336',
+					orange: '#F97316'
 				},
 			},
 			borderRadius: {
@@ -112,8 +113,8 @@ export default {
 					'50%': { transform: 'translateY(-10px)' }
 				},
 				'scale': {
-					'0%': { transform: 'scale(0.95)' },
-					'100%': { transform: 'scale(1)' }
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
 				}
 			},
 			animation: {
@@ -125,7 +126,8 @@ export default {
 			},
 			fontFamily: {
 				'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
-				'display': ['Poppins', 'ui-sans-serif', 'system-ui']
+				'display': ['Poppins', 'ui-sans-serif', 'system-ui'],
+				'hugh': ['"Hugh is Life"', 'cursive']
 			},
 		}
 	},

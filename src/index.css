@@ -1,6 +1,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Hugh is Life font */
+@font-face {
+  font-family: 'Hugh is Life';
+  src: url('/lovable-uploads/115e0d04-8a9b-46ca-9c7e-1be55d71e320.png') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -85,11 +94,11 @@
 
 @layer components {
   .hero-gradient {
-    @apply bg-gradient-to-b from-nalam-green-light/10 via-background to-background;
+    @apply bg-gradient-to-b from-[#F97316]/10 via-background to-background;
   }
   
   .feature-gradient {
-    @apply bg-gradient-to-br from-nalam-green/10 to-nalam-sky/10;
+    @apply bg-gradient-to-br from-[#F97316]/10 to-[#ea384c]/10;
   }
   
   .feature-card {
@@ -97,6 +106,25 @@
   }
   
   .eco-badge {
-    @apply inline-flex items-center justify-center px-3 py-1 text-sm font-medium rounded-full bg-nalam-green text-white;
+    @apply inline-flex items-center justify-center px-3 py-1 text-sm font-medium rounded-full bg-[#F97316] text-white;
   }
+}
+
+/* Added animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes scale {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-scale {
+  animation: scale 0.3s ease-out forwards;
 }

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { FoodAnalysisResult } from "../types/food";
 import { mockFoodData } from "../data/mockFoodData";
-import { Carrot, Apple, Candy } from "lucide-react";
+import { Carrot, Apple, Candy, Coffee } from "lucide-react";
 
 interface SearchFormProps {
   onSearchResult: (result: FoodAnalysisResult) => void;
@@ -34,6 +34,30 @@ const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
     }, 1500);
   };
 
+  // Quick search items for popular mock data
+  const quickSearchItems = [
+    { name: "Cold Coffee", icon: Coffee, color: "#F97316" },
+    { name: "Instant Noodles", icon: Carrot, color: "#ea384c" },
+    { name: "Potato Chips", icon: Candy, color: "#F97316" },
+    { name: "Breakfast Cereal", icon: Apple, color: "#ea384c" },
+  ];
+
+  const handleQuickSearch = (searchTerm: string) => {
+    setQuery(searchTerm);
+    
+    // Optional: auto-submit the form if desired
+    setIsLoading(true);
+    setTimeout(() => {
+      // Find matching food in our mock data or return a default
+      const result = mockFoodData.find(
+        food => food.name.toLowerCase().includes(searchTerm.toLowerCase())
+      ) || mockFoodData[0];
+      
+      onSearchResult(result);
+      setIsLoading(false);
+    }, 1500);
+  };
+
   return (
     <form onSubmit={handleSearch} className="space-y-4">
       <div className="flex items-center relative">
@@ -42,31 +66,82 @@ const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
           placeholder="Search for a food product (e.g., apple, chips, yogurt)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="pr-10 border-nalam-green-light focus:border-nalam-green"
+          className="pr-10 border-[#F97316] focus:border-[#ea384c]"
         />
-        <Search className="absolute right-3 text-nalam-green" size={18} />
+        <Search className="absolute right-3 text-[#F97316]" size={18} />
       </div>
       
-      <Button type="submit" className="w-full bg-gradient-to-r from-nalam-green to-nalam-leaf hover:opacity-90 text-white">
+      <Button type="submit" className="w-full bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white">
         Search
       </Button>
       
-      <div className="bg-gradient-to-r from-nalam-sky/20 to-nalam-sun/20 p-3 rounded-lg mt-4">
+      <div className="bg-gradient-to-r from-[#F97316]/20 to-[#ea384c]/20 p-3 rounded-lg mt-4">
         <p className="text-sm text-center text-nalam-earth-dark font-medium mb-2">
-          Try searching for these healthy options:
+          Try searching for these items:
         </p>
-        <div className="flex justify-center gap-4 flex-wrap">
-          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded-full text-xs shadow-sm">
-            <Apple size={14} className="text-nalam-red" /> 
-            <span>apple</span>
+        <div className="flex justify-center gap-2 flex-wrap">
+          {quickSearchItems.map((item, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => handleQuickSearch(item.name)}
+              className="flex items-center gap-1 bg-white px-2 py-1 rounded-full text-xs shadow-sm hover:shadow-md transition-shadow border border-[#F97316]/20"
+            >
+              <item.icon size={14} style={{ color: item.color }} /> 
+              <span>{item.name}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Mock Data Preview */}
+      <div className="bg-white p-4 rounded-lg border border-[#F97316]/30 mt-6">
+        <h3 className="font-medium text-sm text-[#ea384c] mb-3">Popular Searches</h3>
+        
+        <div className="space-y-3">
+          <div className="p-2 hover:bg-[#F97316]/5 rounded-md transition-colors cursor-pointer" onClick={() => handleQuickSearch("Cold Coffee")}>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <Coffee size={16} className="text-[#F97316]" />
+                <div>
+                  <p className="text-sm font-medium">Cold Coffee</p>
+                  <p className="text-xs text-muted-foreground">Junk Beverage, 180 cal</p>
+                </div>
+              </div>
+              <div className="text-xs px-2 py-1 bg-[#ea384c]/10 text-[#ea384c] rounded-full">
+                High Sugar
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded-full text-xs shadow-sm">
-            <Carrot size={14} className="text-nalam-leaf" /> 
-            <span>yogurt</span>
+          
+          <div className="p-2 hover:bg-[#F97316]/5 rounded-md transition-colors cursor-pointer" onClick={() => handleQuickSearch("Instant Noodles")}>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <Carrot size={16} className="text-[#ea384c]" />
+                <div>
+                  <p className="text-sm font-medium">Instant Noodles</p>
+                  <p className="text-xs text-muted-foreground">Junk Food, 340 cal</p>
+                </div>
+              </div>
+              <div className="text-xs px-2 py-1 bg-[#ea384c]/10 text-[#ea384c] rounded-full">
+                High Sodium
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded-full text-xs shadow-sm">
-            <Candy size={14} className="text-nalam-sun" /> 
-            <span>chips</span>
+          
+          <div className="p-2 hover:bg-[#F97316]/5 rounded-md transition-colors cursor-pointer" onClick={() => handleQuickSearch("Potato Chips")}>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <Candy size={16} className="text-[#F97316]" />
+                <div>
+                  <p className="text-sm font-medium">Potato Chips</p>
+                  <p className="text-xs text-muted-foreground">Junk Snack, 270 cal</p>
+                </div>
+              </div>
+              <div className="text-xs px-2 py-1 bg-[#ea384c]/10 text-[#ea384c] rounded-full">
+                Trans Fats
+              </div>
+            </div>
           </div>
         </div>
       </div>
