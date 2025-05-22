@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <a href="#" className="flex items-center gap-2">
-                  <span className="text-2xl font-display font-bold">Nalam</span>
+                  <span className="text-2xl font-hugh font-bold">Nalam</span>
                 </a>
               </div>
               <p className="text-white text-sm">
