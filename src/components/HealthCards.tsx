@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Leaf, Timer, Meditation, Apple } from "lucide-react";
+import { Leaf, Timer, Heart, Apple } from "lucide-react";
 
 const HealthCards = () => {
   return (
@@ -49,7 +49,7 @@ const HealthCards = () => {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xl font-semibold">Mindful Meditation</CardTitle>
-                <Meditation className="h-6 w-6 text-[#F97316]" />
+                <Heart className="h-6 w-6 text-[#F97316]" />
               </div>
               <CardDescription>Cultivate peace of mind and reduce stress</CardDescription>
             </CardHeader>
