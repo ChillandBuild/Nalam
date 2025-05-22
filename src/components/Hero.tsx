@@ -32,13 +32,13 @@ const Hero = () => {
 
   return (
     <section className="hero-gradient pt-10 pb-20 md:pt-20 md:pb-32 relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Background elements - removed animations */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-[#f8f8f8] opacity-80"></div>
-        <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-[#F97316]/10 blur-xl animate-float"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 rounded-full bg-[#ea384c]/10 blur-xl animate-float" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-40 left-1/4 w-40 h-40 rounded-full bg-[#F97316]/20 blur-xl animate-float" style={{animationDelay: '1.5s'}}></div>
-        <div className="absolute bottom-60 right-1/4 w-36 h-36 rounded-full bg-[#ea384c]/10 blur-xl animate-float" style={{animationDelay: '2.2s'}}></div>
+        <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-[#F97316]/10 blur-xl"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 rounded-full bg-[#ea384c]/10 blur-xl"></div>
+        <div className="absolute bottom-40 left-1/4 w-40 h-40 rounded-full bg-[#F97316]/20 blur-xl"></div>
+        <div className="absolute bottom-60 right-1/4 w-36 h-36 rounded-full bg-[#ea384c]/10 blur-xl"></div>
         
         {/* Subtle patterns */}
         <div className="absolute inset-0 bright-dots"></div>
@@ -52,37 +52,35 @@ const Hero = () => {
             </h2>
             
             <div className="flex flex-col gap-4 w-full">
-              {/* Home and Search buttons removed as requested */}
-              
-              {/* Main card with curvy design */}
-              <Card className="bg-white overflow-hidden border-none shadow-xl animate-scale mt-4 group rounded-[2rem]">
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-[#F97316]/20 to-[#ea384c]/20 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500"></div>
-                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-[#F97316]/20 to-[#ea384c]/20 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500"></div>
+              {/* Main card - removed animation classes */}
+              <Card className="bg-white overflow-hidden border-none shadow-xl mt-4 group rounded-[2rem]">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-[#F97316]/20 to-[#ea384c]/20 rounded-full blur-xl"></div>
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-[#F97316]/20 to-[#ea384c]/20 rounded-full blur-xl"></div>
                 
                 <CardHeader className="rounded-t-[2rem] bg-gradient-to-r from-[#F97316] to-[#ea384c] p-6">
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Sparkles className="h-6 w-6 animate-pulse" />
+                    <Sparkles className="h-6 w-6" />
                     <span>Healthy Food Choices</span>
                   </CardTitle>
                 </CardHeader>
                 
                 <CardContent className="p-6 relative z-10">
                   <div className="space-y-4">
-                    {/* Example content */}
+                    {/* Example content - removed animation classes */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-gradient-to-br from-white to-[#F97316]/5 p-4 rounded-xl shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                      <div className="bg-gradient-to-br from-white to-[#F97316]/5 p-4 rounded-xl shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300">
                         <h4 className="font-semibold text-[#F97316] mb-1">Sustainable Diet Tips</h4>
                         <p className="text-sm text-nalam-earth-dark">Choose locally sourced, seasonal foods to reduce your carbon footprint.</p>
                       </div>
                       
-                      <div className="bg-gradient-to-br from-white to-[#ea384c]/5 p-4 rounded-xl shadow-sm border border-[#ea384c]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in" style={{animationDelay: '0.2s'}}>
+                      <div className="bg-gradient-to-br from-white to-[#ea384c]/5 p-4 rounded-xl shadow-sm border border-[#ea384c]/20 hover:shadow-md transition-all duration-300">
                         <h4 className="font-semibold text-[#ea384c] mb-1">Eco-Friendly Packaging</h4>
                         <p className="text-sm text-nalam-earth-dark">Look for products with minimal or recyclable packaging to reduce waste.</p>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-gradient-to-br from-white to-[#ea384c]/5 p-4 rounded-xl shadow-sm border border-[#ea384c]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in" style={{animationDelay: '0.3s'}}>
+                      <div className="bg-gradient-to-br from-white to-[#ea384c]/5 p-4 rounded-xl shadow-sm border border-[#ea384c]/20 hover:shadow-md transition-all duration-300">
                         <h4 className="font-semibold text-[#ea384c] mb-1">Monthly Health Goals</h4>
                         <ul className="text-sm text-nalam-earth-dark space-y-1 list-disc pl-4">
                           <li>Reduce processed food intake</li>
@@ -90,7 +88,7 @@ const Hero = () => {
                         </ul>
                       </div>
                       
-                      <div className="bg-gradient-to-br from-white to-[#F97316]/5 p-4 rounded-xl shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in" style={{animationDelay: '0.4s'}}>
+                      <div className="bg-gradient-to-br from-white to-[#F97316]/5 p-4 rounded-xl shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300">
                         <h4 className="font-semibold text-[#F97316] mb-1">Weekly Meal Planning</h4>
                         <p className="text-sm text-nalam-earth-dark">Plan your meals to avoid waste and make healthier choices.</p>
                       </div>
@@ -126,23 +124,23 @@ const Hero = () => {
           </div>
           
           <div className="w-full md:w-1/2 relative">
-            {/* Mock Data Display with enhanced curvy card */}
+            {/* Mock Data Display - removed animation classes */}
             <div className="mt-6 md:mt-0">
-              <Card className="overflow-hidden border-none shadow-xl rounded-[2rem] bg-gradient-to-br from-white to-[#FFF7ED] animate-scale group">
-                <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-[#F97316]/30 to-[#ea384c]/20 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500"></div>
-                <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-gradient-to-tr from-[#F97316]/20 to-[#ea384c]/30 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500"></div>
+              <Card className="overflow-hidden border-none shadow-xl rounded-[2rem] bg-gradient-to-br from-white to-[#FFF7ED] group">
+                <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-[#F97316]/30 to-[#ea384c]/20 rounded-full blur-xl"></div>
+                <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-gradient-to-tr from-[#F97316]/20 to-[#ea384c]/30 rounded-full blur-xl"></div>
                 
                 <CardHeader className="rounded-t-[2rem] bg-gradient-to-r from-[#F97316] to-[#ea384c] p-6">
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Sparkles className="h-6 w-6 animate-pulse" />
+                    <Sparkles className="h-6 w-6" />
                     <span>Popular Food Analysis</span>
                   </CardTitle>
                 </CardHeader>
                 
                 <CardContent className="p-6 relative z-10">
                   <div className="space-y-5">
-                    {/* Cold Coffee */}
-                    <div className="bg-gradient-to-br from-white to-[#F97316]/10 p-4 rounded-[1.5rem] shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+                    {/* Cold Coffee - removed animation classes */}
+                    <div className="bg-gradient-to-br from-white to-[#F97316]/10 p-4 rounded-[1.5rem] shadow-sm border border-[#F97316]/20 hover:shadow-md transition-all duration-300">
                       <div className="flex justify-between items-start">
                         <div>
                           <h4 className="font-semibold text-[#F97316]">Cold Coffee</h4>
@@ -164,8 +162,8 @@ const Hero = () => {
                       </div>
                     </div>
                     
-                    {/* Instant Noodles */}
-                    <div className="bg-gradient-to-br from-white to-[#ea384c]/10 p-4 rounded-[1.5rem] shadow-sm border border-[#ea384c]/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02] animate-fade-in" style={{animationDelay: '0.2s'}}>
+                    {/* Instant Noodles - removed animation classes */}
+                    <div className="bg-gradient-to-br from-white to-[#ea384c]/10 p-4 rounded-[1.5rem] shadow-sm border border-[#ea384c]/20 hover:shadow-md transition-all duration-300">
                       <div className="flex justify-between items-start">
                         <div>
                           <h4 className="font-semibold text-[#ea384c]">Instant Noodles</h4>
@@ -188,7 +186,7 @@ const Hero = () => {
                     </div>
                   </div>
                   
-                  {/* Quick Search and Fact of the Day moved to the bottom */}
+                  {/* Quick Search and Fact of the Day - removed animation classes */}
                   <div className="space-y-4 mt-6 border-t border-[#F97316]/10 pt-4">
                     <div className="flex gap-2">
                       <Button 
@@ -209,7 +207,7 @@ const Hero = () => {
                     </div>
                     
                     {showFactOfDay && (
-                      <div className="bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 rounded-[1.5rem] p-4 border border-[#F97316]/30 animate-scale">
+                      <div className="bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 rounded-[1.5rem] p-4 border border-[#F97316]/30">
                         <h3 className="font-display font-semibold text-[#ea384c] mb-2 flex items-center gap-2">
                           <Sparkles className="h-4 w-4" />
                           Food Fact of the Day
@@ -219,14 +217,14 @@ const Hero = () => {
                     )}
                     
                     {showSearch && (
-                      <div className="bg-white rounded-[1.5rem] shadow-md p-4 border border-[#F97316]/30 animate-scale">
+                      <div className="bg-white rounded-[1.5rem] shadow-md p-4 border border-[#F97316]/30">
                         <SearchForm onSearchResult={handleSearchResult} setIsLoading={setIsLoading} />
                       </div>
                     )}
                     
                     {isLoading && (
                       <div className="text-center py-4">
-                        <div className="animate-pulse flex flex-col items-center">
+                        <div className="flex flex-col items-center">
                           <div className="h-10 w-10 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] mb-4"></div>
                           <div className="h-4 bg-gradient-to-r from-[#F97316]/40 to-[#ea384c]/40 rounded w-3/4 mb-2"></div>
                           <div className="h-3 bg-gradient-to-r from-[#F97316]/30 to-[#ea384c]/30 rounded w-1/2"></div>
@@ -235,7 +233,7 @@ const Hero = () => {
                     )}
                     
                     {!isLoading && searchResult && (
-                      <div className="bg-gradient-to-r from-[#F97316]/5 to-[#ea384c]/5 rounded-[1.5rem] shadow-md p-4 border border-[#F97316]/30 animate-scale">
+                      <div className="bg-gradient-to-r from-[#F97316]/5 to-[#ea384c]/5 rounded-[1.5rem] shadow-md p-4 border border-[#F97316]/30">
                         <h3 className="text-xl font-display font-bold text-[#ea384c] mb-4">{searchResult.name}</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
@@ -260,7 +258,7 @@ const Hero = () => {
                     )}
                   </div>
                   
-                  {/* View More Button with more curved design */}
+                  {/* View More Button */}
                   <div className="text-center mt-4">
                     <Link to="/search">
                       <Button variant="outline" className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 w-full rounded-[1rem]">
