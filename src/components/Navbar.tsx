@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -30,7 +29,7 @@ const Navbar = () => {
     <nav 
       className={`py-4 w-full sticky top-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? "backdrop-blur-md bg-transparent/30" 
+          ? "bg-transparent/40 backdrop-blur-md" 
           : "bg-transparent"
       }`}
     >
@@ -52,10 +51,10 @@ const Navbar = () => {
         
         {/* Navigation Links with modern design */}
         <div className="hidden md:flex items-center gap-4">
-          {/* Home link with icon and hover animation */}
+          {/* Home link with icon and hover animation - removed rounded-full */}
           <Link 
             to="/" 
-            className={`transition-all duration-300 font-medium flex items-center gap-1.5 px-4 py-2 rounded-full border relative overflow-hidden backdrop-blur-md ${
+            className={`transition-all duration-300 font-medium flex items-center gap-1.5 px-4 py-2 border relative overflow-hidden backdrop-blur-md ${
               location.pathname === "/" 
               ? "text-white border-transparent shadow-md" 
               : "text-gray-600 border-transparent hover:text-[#F97316] hover:border-[#F97316]/20"
@@ -73,10 +72,10 @@ const Navbar = () => {
             Home
           </Link>
           
-          {/* Search link with icon and animation */}
+          {/* Search link with icon and animation - removed rounded-full */}
           <Link
             to="/search"
-            className={`transition-all duration-300 font-medium flex items-center gap-1.5 px-4 py-2 rounded-full border relative overflow-hidden backdrop-blur-md ${
+            className={`transition-all duration-300 font-medium flex items-center gap-1.5 px-4 py-2 border relative overflow-hidden backdrop-blur-md ${
               location.pathname === "/search" 
               ? "text-white border-transparent shadow-md" 
               : "text-gray-600 border-transparent hover:text-[#F97316] hover:border-[#F97316]/20"
@@ -94,16 +93,16 @@ const Navbar = () => {
             <span>Search</span>
           </Link>
           
-          {/* Features dropdown with animation */}
+          {/* Features dropdown with animation - removed rounded-full */}
           <div className="relative group">
             <a 
               href="#features" 
-              className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md flex items-center gap-1.5"
+              className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md flex items-center gap-1.5"
             >
               Features
               <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
             </a>
-            <div className="absolute top-full left-0 mt-1 w-48 bg-transparent backdrop-blur-lg shadow-lg rounded-xl border border-[#F97316]/10 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
+            <div className="absolute top-full left-0 mt-1 w-48 bg-transparent backdrop-blur-lg shadow-lg border border-[#F97316]/10 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
               <a href="#scanner" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F97316]/10 hover:text-[#F97316] transition-colors">Product Scanner</a>
               <a href="#food-analyzer" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F97316]/10 hover:text-[#F97316] transition-colors">Food Analyzer</a>
               <a href="#eco-score" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F97316]/10 hover:text-[#F97316] transition-colors">Eco Score</a>
@@ -112,19 +111,19 @@ const Navbar = () => {
           
           <a 
             href="#how-it-works" 
-            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
           >
             How It Works
           </a>
           <a 
             href="#benefits" 
-            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
           >
             Benefits
           </a>
           <a 
             href="#faq" 
-            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
           >
             FAQ
           </a>
@@ -163,7 +162,7 @@ const Navbar = () => {
         
         {/* Mobile Menu Button with animation */}
         <button 
-          className="md:hidden text-[#F97316] p-1.5 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md"
+          className="md:hidden text-[#F97316] p-1.5 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
@@ -174,14 +173,14 @@ const Navbar = () => {
         </button>
       </div>
       
-      {/* Mobile Menu with updated modern styling */}
+      {/* Mobile Menu with updated styling - removed rounded-full from mobile menu items */}
       {isMenuOpen && (
-        <div className="md:hidden absolute w-full backdrop-blur-xl bg-transparent shadow-lg z-50 animate-fade-in">
+        <div className="md:hidden absolute w-full bg-gradient-to-b from-white/70 to-transparent backdrop-blur-xl shadow-lg z-50 animate-fade-in">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-3">
             {/* Mobile nav items */}
             <Link 
               to="/" 
-              className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
+              className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 border ${
                 location.pathname === "/" 
                 ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
                 : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/10 hover:border-[#F97316]/20"
@@ -195,7 +194,7 @@ const Navbar = () => {
             {/* Mobile Search */}
             <Link
               to="/search"
-              className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
+              className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 border ${
                 location.pathname === "/search" 
                 ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
                 : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/10 hover:border-[#F97316]/20"
@@ -209,7 +208,7 @@ const Navbar = () => {
             {/* Dashboard link for mobile */}
             <Link
               to="/dashboard"
-              className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
+              className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 border ${
                 location.pathname === "/dashboard" 
                 ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
                 : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/10 hover:border-[#F97316]/20"
