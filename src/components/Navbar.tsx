@@ -28,9 +28,9 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`py-4 w-full backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 ${
+      className={`py-4 w-full sticky top-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-transparent/30 shadow-md" 
+          ? "backdrop-blur-md bg-transparent/30" 
           : "bg-transparent"
       }`}
     >
@@ -98,33 +98,33 @@ const Navbar = () => {
           <div className="relative group">
             <a 
               href="#features" 
-              className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md flex items-center gap-1.5"
+              className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md flex items-center gap-1.5"
             >
               Features
               <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
             </a>
-            <div className="absolute top-full left-0 mt-1 w-48 bg-white/70 backdrop-blur-md shadow-lg rounded-xl border border-[#F97316]/10 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
-              <a href="#scanner" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#F97316] transition-colors">Product Scanner</a>
-              <a href="#food-analyzer" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#F97316] transition-colors">Food Analyzer</a>
-              <a href="#eco-score" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#F97316] transition-colors">Eco Score</a>
+            <div className="absolute top-full left-0 mt-1 w-48 bg-transparent backdrop-blur-lg shadow-lg rounded-xl border border-[#F97316]/10 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
+              <a href="#scanner" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F97316]/10 hover:text-[#F97316] transition-colors">Product Scanner</a>
+              <a href="#food-analyzer" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F97316]/10 hover:text-[#F97316] transition-colors">Food Analyzer</a>
+              <a href="#eco-score" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F97316]/10 hover:text-[#F97316] transition-colors">Eco Score</a>
             </div>
           </div>
           
           <a 
             href="#how-it-works" 
-            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
           >
             How It Works
           </a>
           <a 
             href="#benefits" 
-            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
           >
             Benefits
           </a>
           <a 
             href="#faq" 
-            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md hover:shadow-sm"
           >
             FAQ
           </a>
@@ -163,7 +163,7 @@ const Navbar = () => {
         
         {/* Mobile Menu Button with animation */}
         <button 
-          className="md:hidden text-[#F97316] p-1.5 rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md"
+          className="md:hidden text-[#F97316] p-1.5 rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20 backdrop-blur-md"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
@@ -176,7 +176,7 @@ const Navbar = () => {
       
       {/* Mobile Menu with updated modern styling */}
       {isMenuOpen && (
-        <div className="md:hidden absolute w-full bg-white/60 backdrop-blur-md shadow-lg z-50 animate-fade-in">
+        <div className="md:hidden absolute w-full backdrop-blur-xl bg-transparent shadow-lg z-50 animate-fade-in">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-3">
             {/* Mobile nav items */}
             <Link 
@@ -184,7 +184,7 @@ const Navbar = () => {
               className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
                 location.pathname === "/" 
                 ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
-                : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/30 hover:border-[#F97316]/20"
+                : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/10 hover:border-[#F97316]/20"
               }`}
               onClick={closeMenu}
             >
@@ -198,7 +198,7 @@ const Navbar = () => {
               className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
                 location.pathname === "/search" 
                 ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
-                : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/30 hover:border-[#F97316]/20"
+                : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/10 hover:border-[#F97316]/20"
               }`}
               onClick={closeMenu}
             >
@@ -212,17 +212,17 @@ const Navbar = () => {
               className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
                 location.pathname === "/dashboard" 
                 ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
-                : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/30 hover:border-[#F97316]/20"
+                : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/10 hover:border-[#F97316]/20"
               }`}
               onClick={closeMenu}
             >
               Dashboard
             </Link>
             
-            <a href="#features" className="text-gray-600 hover:text-[#F97316] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>Features</a>
-            <a href="#how-it-works" className="text-gray-600 hover:text-[#F97316] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>How It Works</a>
-            <a href="#benefits" className="text-gray-600 hover:text-[#F97316] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>Benefits</a>
-            <a href="#faq" className="text-gray-600 hover:text-[#F97316] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/30 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>FAQ</a>
+            <a href="#features" className="text-gray-600 hover:text-[#F97316] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>Features</a>
+            <a href="#how-it-works" className="text-gray-600 hover:text-[#F97316] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>How It Works</a>
+            <a href="#benefits" className="text-gray-600 hover:text-[#F97316] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>Benefits</a>
+            <a href="#faq" className="text-gray-600 hover:text-[#F97316] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>FAQ</a>
             
             <div className="flex flex-col gap-3 pt-2">
               {location.pathname === "/dashboard" ? (
