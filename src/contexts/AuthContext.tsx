@@ -22,6 +22,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Set up the auth state listener first
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, currentSession) => {
+      console.log("Auth state changed:", event, currentSession?.user?.user_metadata);
       setSession(currentSession);
       setUser(currentSession?.user ?? null);
       setLoading(false);
@@ -29,6 +30,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     // Then check for existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log("Initial session check:", session?.user?.user_metadata);
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
@@ -48,9 +50,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         await supabase.auth.signOut({ scope: 'global' });
       } catch (err) {
+        console.error("Error during pre-signin signout:", err);
         // Continue even if this fails
       }
       
+      console.log("Signing in with:", email);
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -58,23 +62,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       return { error };
     } catch (error) {
+      console.error("Sign in error:", error);
       return { error };
     }
   };
 
   const signOut = async () => {
-    // Clean up existing auth state
-    cleanupAuthState();
-    
-    // Attempt global sign out
     try {
-      await supabase.auth.signOut({ scope: 'global' });
-    } catch (err) {
-      // Continue even if this fails
+      console.log("Signing out user");
+      // Clean up existing auth state
+      cleanupAuthState();
+      
+      // Attempt global sign out
+      try {
+        await supabase.auth.signOut({ scope: 'global' });
+      } catch (err) {
+        console.error("Error during signout:", err);
+        // Continue even if this fails
+      }
+      
+      // Force refresh the page to ensure a clean state
+      window.location.href = '/signin';
+    } catch (error) {
+      console.error("Error during sign out:", error);
     }
-    
-    // Force refresh the page to ensure a clean state
-    window.location.href = '/signin';
   };
 
   return (

@@ -31,8 +31,13 @@ const AuthButtons = ({ isOnDashboard, onClick }: AuthButtonsProps) => {
   };
 
   if (user) {
+    const userName = user.user_metadata?.full_name || "User";
+    
     return (
       <div className="flex items-center gap-4">
+        <span className="text-sm text-gray-700">
+          Welcome, {userName}
+        </span>
         <Button 
           variant="outline" 
           className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:border-[#F97316] hover:text-[#ea384c] rounded-full transition-all duration-300 backdrop-blur-md"

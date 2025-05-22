@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { supabase } from "@/lib/supabase";
 import * as z from "zod";
 import { cleanupAuthState } from "@/lib/auth-utils";
+import { useAuth } from "@/contexts/AuthContext";
 
 const signUpSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -30,6 +31,13 @@ const SignUp = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { user } = useAuth();
+
+  // If user is already logged in, redirect to dashboard
+  if (user) {
+    navigate("/dashboard");
+    return null;
+  }
 
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
@@ -46,6 +54,8 @@ const SignUp = () => {
     setIsLoading(true);
     
     try {
+      console.log("Signing up with data:", { name: data.name, email: data.email });
+      
       // Clean up existing auth state to prevent conflicts
       cleanupAuthState();
       
@@ -53,16 +63,17 @@ const SignUp = () => {
       try {
         await supabase.auth.signOut({ scope: 'global' });
       } catch (err) {
+        console.error("Error during pre-signup signout:", err);
         // Continue even if this fails
       }
       
       // Register the user with Supabase
-      const { error } = await supabase.auth.signUp({
+      const { data: authData, error } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
           data: {
-            full_name: data.name,
+            full_name: data.name, // Store the name in user metadata
           }
         }
       });
@@ -71,14 +82,18 @@ const SignUp = () => {
         throw error;
       }
       
+      console.log("Signup successful, auth data:", authData);
+      
       toast({
         title: "Account created successfully!",
-        description: "Please check your email for the confirmation link.",
+        description: "You are now signed in.",
       });
       
       // Redirect to dashboard after successful sign up
       navigate("/dashboard");
     } catch (error: any) {
+      console.error("Signup error:", error);
+      
       toast({
         title: "Failed to create account",
         description: error.message || "Something went wrong. Please try again later.",
