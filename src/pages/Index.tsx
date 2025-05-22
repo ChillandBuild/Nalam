@@ -7,6 +7,7 @@ import Benefits from "../components/Benefits";
 import FAQ from "../components/FAQ";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
+import HealthCards from "../components/HealthCards";
 
 const Index = () => {
   return (
@@ -45,6 +46,7 @@ const Index = () => {
       <Hero />
       <Features />
       <HowItWorks />
+      <HealthCards />
       <Benefits />
       <FAQ />
       <CTASection />
