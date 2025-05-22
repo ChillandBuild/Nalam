@@ -31,6 +31,7 @@ const AuthButtons = ({ isOnDashboard, onClick }: AuthButtonsProps) => {
   };
 
   if (user) {
+    // Using the correct user metadata field to get the name
     const userName = user.user_metadata?.full_name || "User";
     
     return (

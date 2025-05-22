@@ -13,9 +13,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Switch } from "@/components/ui/switch";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Dashboard = () => {
   const { toast } = useToast();
+  const { user } = useAuth();
   const [focusMode, setFocusMode] = useState<"eco" | "health">("eco");
   const [progress, setProgress] = useState(0);
 
@@ -34,7 +36,8 @@ const Dashboard = () => {
     });
   };
 
-  const userName = "Emma"; // In a real app, this would come from authentication
+  // Get user name from auth context
+  const userName = user?.user_metadata?.full_name || "User";
   const ecoPoints = 150;
   const ecoLevel = "Eco Explorer";
   const streak = 7;
