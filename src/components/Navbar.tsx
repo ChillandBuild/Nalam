@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -32,6 +31,9 @@ const Navbar = () => {
       <div className="container px-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-[#F97316] flex items-center justify-center">
+              <Heart className="w-5 h-5 text-white fill-white" />
+            </div>
             <div className="flex flex-col">
               <h1 className="font-['Hugh_is_Life'] text-2xl text-nalam-earth-dark tracking-wide">Nalam</h1>
               <p className="text-xs text-nalam-earth-dark">Making sustainable choices easier</p>
@@ -50,31 +52,15 @@ const Navbar = () => {
             Home
           </a>
           
-          {/* Search form with curvy design and integrated text */}
+          {/* Search component with "View More Food Analysis" tab */}
           <div className="relative">
-            <button
-              onClick={() => setIsCommandOpen(true)}
+            <Link
+              to="/search"
               className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1 px-4 py-2 rounded-full bg-[#FFF7ED] border border-[#F97316]/20"
             >
               <Search className="w-4 h-4" />
-              <span>Analyze Your Food</span>
-            </button>
-            
-            <CommandDialog open={isCommandOpen} onOpenChange={setIsCommandOpen}>
-              <Command className="rounded-xl border border-[#F97316]/20">
-                <CommandInput placeholder="Search and analyze your food..." className="rounded-t-xl" />
-                <CommandList className="rounded-b-xl">
-                  <CommandEmpty>No results found.</CommandEmpty>
-                  <CommandGroup heading="Suggestions">
-                    <CommandItem className="rounded-md">Apple</CommandItem>
-                    <CommandItem className="rounded-md">Banana</CommandItem>
-                    <CommandItem className="rounded-md">Orange</CommandItem>
-                    <CommandItem className="rounded-md">Coffee</CommandItem>
-                    <CommandItem className="rounded-md">Instant Noodles</CommandItem>
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </CommandDialog>
+              <span>Search</span>
+            </Link>
           </div>
           
           {/* Other navigation links */}
@@ -149,16 +135,14 @@ const Navbar = () => {
             </a>
             
             {/* Mobile Search */}
-            <button
-              onClick={() => {
-                setIsCommandOpen(true);
-                setIsMenuOpen(false);
-              }}
+            <Link
+              to="/search"
               className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium flex items-center gap-1 px-4 rounded-full bg-[#FFF7ED]/50"
+              onClick={() => setIsMenuOpen(false)}
             >
               <Search className="w-4 h-4" />
-              Analyze Your Food
-            </button>
+              Search
+            </Link>
             
             <a href="#features" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">Features</a>
             <a href="#how-it-works" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">How It Works</a>

@@ -38,6 +38,7 @@ const Search = () => {
           
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 orange-red-text relative z-10">
             <Sparkles className="inline-block mr-2 text-[#F97316] animate-pulse" size={24} />
+            Food Analysis
           </h1>
           
           <div className="flex flex-col items-center gap-3">
@@ -55,6 +56,7 @@ const Search = () => {
             <TabsList className="w-full mb-6 orange-red-gradient-light rounded-full overflow-hidden">
               <TabsTrigger value="search" className="flex-1 rounded-full data-[state=active]:bg-[#F97316] data-[state=active]:text-white data-[state=active]:shadow-md">Search Product</TabsTrigger>
               <TabsTrigger value="upload" className="flex-1 rounded-full data-[state=active]:bg-[#ea384c] data-[state=active]:text-white data-[state=active]:shadow-md">Upload Image</TabsTrigger>
+              <TabsTrigger value="more" className="flex-1 rounded-full data-[state=active]:bg-[#F97316] data-[state=active]:text-white data-[state=active]:shadow-md">View More Food Analysis</TabsTrigger>
             </TabsList>
             
             <TabsContent value="search" className="mt-0 pt-2">
@@ -63,6 +65,35 @@ const Search = () => {
             
             <TabsContent value="upload" className="mt-0 pt-2">
               <ImageUpload onUploadResult={handleSearchResult} setIsLoading={setIsLoading} />
+            </TabsContent>
+            
+            <TabsContent value="more" className="mt-0 pt-2">
+              <div className="p-6 text-center">
+                <h3 className="text-lg font-semibold mb-4">More Food Analysis Options</h3>
+                <p className="mb-6">Explore our comprehensive food database and learn more about your favorite products.</p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="bg-[#FFF7ED] p-4 rounded-lg border border-[#F97316]/20 hover:shadow-md transition-shadow">
+                    <h4 className="font-medium mb-2">Trending Products</h4>
+                    <p className="text-sm text-muted-foreground">Discover what foods others are analyzing right now.</p>
+                  </div>
+                  
+                  <div className="bg-[#FFF7ED] p-4 rounded-lg border border-[#F97316]/20 hover:shadow-md transition-shadow">
+                    <h4 className="font-medium mb-2">Healthy Alternatives</h4>
+                    <p className="text-sm text-muted-foreground">Find better options for your favorite foods.</p>
+                  </div>
+                  
+                  <div className="bg-[#FFF7ED] p-4 rounded-lg border border-[#F97316]/20 hover:shadow-md transition-shadow">
+                    <h4 className="font-medium mb-2">Seasonal Recommendations</h4>
+                    <p className="text-sm text-muted-foreground">Foods that are in season and sustainability scores.</p>
+                  </div>
+                  
+                  <div className="bg-[#FFF7ED] p-4 rounded-lg border border-[#F97316]/20 hover:shadow-md transition-shadow">
+                    <h4 className="font-medium mb-2">Detailed Nutrition</h4>
+                    <p className="text-sm text-muted-foreground">Deep dive into detailed nutrition information.</p>
+                  </div>
+                </div>
+              </div>
             </TabsContent>
           </Tabs>
         </div>
