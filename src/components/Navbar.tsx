@@ -1,7 +1,8 @@
+
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, LayoutDashboard, Search } from "lucide-react";
+import { Heart, Home, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   NavigationMenu,
@@ -31,9 +32,6 @@ const Navbar = () => {
       <div className="container px-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] flex items-center justify-center text-white">
-              <Heart className="w-5 h-5 fill-white" />
-            </div>
             <div className="flex flex-col">
               <h1 className="font-['Hugh_is_Life'] text-2xl text-nalam-earth-dark tracking-wide">Nalam</h1>
               <p className="text-xs text-nalam-earth-dark">Making sustainable choices easier</p>
@@ -43,36 +41,36 @@ const Navbar = () => {
         
         {/* Navigation Links with curvy design */}
         <div className="hidden md:flex items-center gap-4">
-          {/* Dashboard link with icon */}
+          {/* Home link with icon */}
           <a 
-            href="#dashboard" 
+            href="/" 
             className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1 px-4 py-2 rounded-full bg-[#FFF7ED] border border-[#F97316]/20"
           >
-            <LayoutDashboard className="w-4 h-4" />
-            Dashboard
+            <Home className="w-4 h-4" />
+            Home
           </a>
           
-          {/* Search form with curvy design */}
+          {/* Search form with curvy design and integrated text */}
           <div className="relative">
             <button
               onClick={() => setIsCommandOpen(true)}
               className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1 px-4 py-2 rounded-full bg-[#FFF7ED] border border-[#F97316]/20"
             >
               <Search className="w-4 h-4" />
-              <span>Search</span>
+              <span>Analyze Your Food</span>
             </button>
             
             <CommandDialog open={isCommandOpen} onOpenChange={setIsCommandOpen}>
-              <Command>
-                <CommandInput placeholder="Search for food..." />
-                <CommandList>
+              <Command className="rounded-xl border border-[#F97316]/20">
+                <CommandInput placeholder="Search and analyze your food..." className="rounded-t-xl" />
+                <CommandList className="rounded-b-xl">
                   <CommandEmpty>No results found.</CommandEmpty>
                   <CommandGroup heading="Suggestions">
-                    <CommandItem>Apple</CommandItem>
-                    <CommandItem>Banana</CommandItem>
-                    <CommandItem>Orange</CommandItem>
-                    <CommandItem>Coffee</CommandItem>
-                    <CommandItem>Instant Noodles</CommandItem>
+                    <CommandItem className="rounded-md">Apple</CommandItem>
+                    <CommandItem className="rounded-md">Banana</CommandItem>
+                    <CommandItem className="rounded-md">Orange</CommandItem>
+                    <CommandItem className="rounded-md">Coffee</CommandItem>
+                    <CommandItem className="rounded-md">Instant Noodles</CommandItem>
                   </CommandGroup>
                 </CommandList>
               </Command>
@@ -137,10 +135,19 @@ const Navbar = () => {
         </button>
       </div>
       
-      {/* Mobile Menu with updated styling */}
+      {/* Mobile Menu with updated curvy styling */}
       {isMenuOpen && (
         <div className="md:hidden absolute w-full bg-white shadow-lg z-50 animate-fade-in">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-4">
+            {/* Mobile Home */}
+            <a 
+              href="/" 
+              className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium flex items-center gap-1 px-4 rounded-full bg-[#FFF7ED]/50"
+            >
+              <Home className="w-4 h-4" />
+              Home
+            </a>
+            
             {/* Mobile Search */}
             <button
               onClick={() => {
@@ -150,16 +157,9 @@ const Navbar = () => {
               className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium flex items-center gap-1 px-4 rounded-full bg-[#FFF7ED]/50"
             >
               <Search className="w-4 h-4" />
-              Search
+              Analyze Your Food
             </button>
             
-            <a 
-              href="#dashboard" 
-              className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium flex items-center gap-1 px-4 rounded-full bg-[#FFF7ED]/50"
-            >
-              <LayoutDashboard className="w-4 h-4" />
-              Dashboard
-            </a>
             <a href="#features" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">Features</a>
             <a href="#how-it-works" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">How It Works</a>
             <a href="#benefits" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">Benefits</a>

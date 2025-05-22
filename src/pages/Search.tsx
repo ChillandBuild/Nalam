@@ -37,8 +37,7 @@ const Search = () => {
           <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-40 h-12 bg-[#F97316]/10 blur-xl"></div>
           
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 orange-red-text relative z-10">
-            Analyze Your Food Choices
-            <Sparkles className="inline-block ml-2 text-[#F97316] animate-pulse" size={24} />
+            <Sparkles className="inline-block mr-2 text-[#F97316] animate-pulse" size={24} />
           </h1>
           
           <div className="flex flex-col items-center gap-3">
@@ -48,14 +47,14 @@ const Search = () => {
           </div>
         </div>
         
-        <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-colorful p-6 md:p-8 mb-8 border border-[#F97316]/30 relative overflow-hidden card-hover">
+        <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-colorful p-6 md:p-8 mb-8 border border-[#F97316]/30 relative overflow-hidden card-hover">
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#F97316]/30 to-[#ea384c]/20 rounded-bl-[100px] -z-0"></div>
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#F97316]/20 to-[#ea384c]/30 rounded-tr-[100px] -z-0"></div>
           
           <Tabs defaultValue="search" className="w-full relative z-10">
-            <TabsList className="w-full mb-6 orange-red-gradient-light">
-              <TabsTrigger value="search" className="flex-1 data-[state=active]:bg-[#F97316] data-[state=active]:text-white data-[state=active]:shadow-md">Search Product</TabsTrigger>
-              <TabsTrigger value="upload" className="flex-1 data-[state=active]:bg-[#ea384c] data-[state=active]:text-white data-[state=active]:shadow-md">Upload Image</TabsTrigger>
+            <TabsList className="w-full mb-6 orange-red-gradient-light rounded-full overflow-hidden">
+              <TabsTrigger value="search" className="flex-1 rounded-full data-[state=active]:bg-[#F97316] data-[state=active]:text-white data-[state=active]:shadow-md">Search Product</TabsTrigger>
+              <TabsTrigger value="upload" className="flex-1 rounded-full data-[state=active]:bg-[#ea384c] data-[state=active]:text-white data-[state=active]:shadow-md">Upload Image</TabsTrigger>
             </TabsList>
             
             <TabsContent value="search" className="mt-0 pt-2">
@@ -72,8 +71,8 @@ const Search = () => {
           <div className="max-w-3xl mx-auto text-center py-8">
             <div className="animate-pulse flex flex-col items-center">
               <div className="h-12 w-12 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] mb-4 animate-pulse-orange-red animate-bounce-soft"></div>
-              <div className="h-4 bg-gradient-to-r from-[#F97316]/40 to-[#ea384c]/40 rounded w-3/4 mb-2"></div>
-              <div className="h-3 bg-gradient-to-r from-[#F97316]/30 to-[#ea384c]/30 rounded w-1/2"></div>
+              <div className="h-4 bg-gradient-to-r from-[#F97316]/40 to-[#ea384c]/40 rounded-full w-3/4 mb-2"></div>
+              <div className="h-3 bg-gradient-to-r from-[#F97316]/30 to-[#ea384c]/30 rounded-full w-1/2"></div>
             </div>
           </div>
         )}
