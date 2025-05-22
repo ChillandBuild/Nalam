@@ -1,4 +1,6 @@
 
+import { supabase } from "@/lib/supabase";
+
 /**
  * Clean up all Supabase auth-related items from storage to prevent auth limbo states
  * Call this before attempting new sign-ins or sign-ups
