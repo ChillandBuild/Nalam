@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, Home, Search } from "lucide-react";
+import { Heart, LayoutDashboard } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,9 +22,13 @@ const Navbar = () => {
           </Link>
         </div>
         
-        {/* Navigation Links - Home and Search buttons removed from middle */}
+        {/* Navigation Links - with Dashboard added */}
         <div className="hidden md:flex items-center gap-6">
           <a href="#features" className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium">Features</a>
+          <a href="#dashboard" className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1">
+            <LayoutDashboard className="w-4 h-4" />
+            Dashboard
+          </a>
           <a href="#how-it-works" className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium">How It Works</a>
           <a href="#benefits" className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium">Benefits</a>
           <a href="#faq" className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium">FAQ</a>
@@ -61,6 +65,10 @@ const Navbar = () => {
         <div className="md:hidden absolute w-full bg-white shadow-lg z-50 animate-fade-in">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-4">
             <a href="#features" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium">Features</a>
+            <a href="#dashboard" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium flex items-center gap-1">
+              <LayoutDashboard className="w-4 h-4" />
+              Dashboard
+            </a>
             <a href="#how-it-works" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium">How It Works</a>
             <a href="#benefits" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium">Benefits</a>
             <a href="#faq" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium">FAQ</a>

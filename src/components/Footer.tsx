@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-white text-black">
       <div className="container px-4 mx-auto py-12">
         <div className="rounded-3xl bg-gradient-to-br from-[#F97316] to-[#ea384c] p-8 shadow-lg text-white">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -85,14 +85,14 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="py-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 mt-6">
-          <div className="text-sm text-white/70">
+        <div className="py-6 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-4 mt-6">
+          <div className="text-sm text-black/70">
             © {new Date().getFullYear()} Nalam. All rights reserved.
           </div>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-white/70 hover:text-white">Privacy Policy</a>
-            <a href="#" className="text-sm text-white/70 hover:text-white">Terms of Service</a>
-            <a href="#" className="text-sm text-white/70 hover:text-white">Cookie Policy</a>
+            <a href="#" className="text-sm text-black/70 hover:text-black">Privacy Policy</a>
+            <a href="#" className="text-sm text-black/70 hover:text-black">Terms of Service</a>
+            <a href="#" className="text-sm text-black/70 hover:text-black">Cookie Policy</a>
           </div>
         </div>
       </div>
