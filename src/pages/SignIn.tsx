@@ -1,8 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Heart, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -10,6 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useAuth } from "@/contexts/AuthContext";
 
 const signInSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -21,6 +21,14 @@ const SignIn = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { signIn, user } = useAuth();
+
+  // Redirect if user is already logged in
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
 
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -35,23 +43,29 @@ const SignIn = () => {
     setIsLoading(true);
     
     try {
-      // Here you would normally connect to your authentication service
       console.log("Sign in data:", data);
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { error } = await signIn(data.email, data.password);
       
-      toast({
-        title: "Sign in successful!",
-        description: "Welcome back to Nalam",
-      });
-      
-      // Redirect to dashboard after successful sign in
-      navigate("/dashboard");
-    } catch (error) {
+      if (error) {
+        toast({
+          title: "Sign in failed",
+          description: error.message || "Please check your credentials and try again.",
+          variant: "destructive",
+        });
+        console.error("Sign in error:", error);
+      } else {
+        toast({
+          title: "Sign in successful!",
+          description: "Welcome back to Nalam",
+        });
+        
+        // Navigate happens automatically via the useEffect above
+      }
+    } catch (error: any) {
       toast({
         title: "Something went wrong",
-        description: "Please try again later",
+        description: error.message || "Please try again later",
         variant: "destructive",
       });
     } finally {
