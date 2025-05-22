@@ -31,11 +31,6 @@ const Index = () => {
       <FAQ />
       <CTASection />
       <Footer />
-      
-      {/* Decorative elements - removed animation */}
-      <div className="fixed bottom-5 right-5 w-16 h-16 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] flex items-center justify-center text-white cursor-pointer shadow-lg">
-        <span className="font-hugh text-xl">N</span>
-      </div>
     </div>
   );
 };
