@@ -42,9 +42,6 @@ const Search = () => {
           </h1>
           
           <div className="flex flex-col items-center gap-3">
-            <p className="text-lg md:text-xl italic font-medium text-nalam-earth-dark inline-block py-1.5 px-6 bg-gradient-to-r from-[#F97316]/30 to-[#ea384c]/30 rounded-full shadow-sm">
-              "Eat This Way, Not That Way"
-            </p>
             <p className="text-sm text-nalam-earth bg-[#F97316]/10 px-4 py-1.5 rounded-full inline-block flex items-center justify-center gap-2 shadow-sm animate-pulse-orange-red">
               Know Your Food, Nourish Your World <Heart size={14} className="text-[#ea384c] fill-[#ea384c]" />
             </p>

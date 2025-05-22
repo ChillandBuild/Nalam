@@ -3,10 +3,22 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Heart, LayoutDashboard, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isCommandOpen, setIsCommandOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,16 +53,31 @@ const Navbar = () => {
           </a>
           
           {/* Search form with curvy design */}
-          <form onSubmit={handleSearch} className="relative flex-1 max-w-[220px]">
-            <Input
-              type="text"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 pr-4 py-2 rounded-full border-[#F97316] focus-visible:ring-[#ea384c]"
-            />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#F97316]" size={16} />
-          </form>
+          <div className="relative">
+            <button
+              onClick={() => setIsCommandOpen(true)}
+              className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1 px-4 py-2 rounded-full bg-[#FFF7ED] border border-[#F97316]/20"
+            >
+              <Search className="w-4 h-4" />
+              <span>Search</span>
+            </button>
+            
+            <CommandDialog open={isCommandOpen} onOpenChange={setIsCommandOpen}>
+              <Command>
+                <CommandInput placeholder="Search for food..." />
+                <CommandList>
+                  <CommandEmpty>No results found.</CommandEmpty>
+                  <CommandGroup heading="Suggestions">
+                    <CommandItem>Apple</CommandItem>
+                    <CommandItem>Banana</CommandItem>
+                    <CommandItem>Orange</CommandItem>
+                    <CommandItem>Coffee</CommandItem>
+                    <CommandItem>Instant Noodles</CommandItem>
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </CommandDialog>
+          </div>
           
           {/* Other navigation links */}
           <a 
@@ -115,16 +142,16 @@ const Navbar = () => {
         <div className="md:hidden absolute w-full bg-white shadow-lg z-50 animate-fade-in">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-4">
             {/* Mobile Search */}
-            <form onSubmit={handleSearch} className="relative mb-2">
-              <Input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 pr-4 py-2 rounded-full border-[#F97316] focus-visible:ring-[#ea384c]"
-              />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#F97316]" size={16} />
-            </form>
+            <button
+              onClick={() => {
+                setIsCommandOpen(true);
+                setIsMenuOpen(false);
+              }}
+              className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium flex items-center gap-1 px-4 rounded-full bg-[#FFF7ED]/50"
+            >
+              <Search className="w-4 h-4" />
+              Search
+            </button>
             
             <a 
               href="#dashboard" 

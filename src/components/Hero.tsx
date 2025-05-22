@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Apple, Heart, Coffee, Search, Sparkles } from "lucide-react";
@@ -51,18 +52,7 @@ const Hero = () => {
             </h2>
             
             <div className="flex flex-col gap-4 w-full">
-              {/* Home and Search buttons moved to the top of hero for better visibility on mobile */}
-              <div className="flex justify-center md:justify-start gap-3">
-                <Link to="/" className="flex items-center gap-2 bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
-                  <Search size={20} />
-                  <span>Home</span>
-                </Link>
-                
-                <Link to="/search" className="flex items-center gap-2 bg-gradient-to-r from-[#ea384c] to-[#F97316] text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
-                  <Search size={20} />
-                  <span>Search</span>
-                </Link>
-              </div>
+              {/* Home and Search buttons removed as requested */}
               
               {/* Main card with curvy design */}
               <Card className="bg-white overflow-hidden border-none shadow-xl animate-scale mt-4 group rounded-[2rem]">
