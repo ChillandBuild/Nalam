@@ -1,10 +1,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Heart, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -20,6 +19,7 @@ const signInSchema = z.object({
 
 const SignIn = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof signInSchema>>({
@@ -45,6 +45,9 @@ const SignIn = () => {
         title: "Sign in successful!",
         description: "Welcome back to Nalam",
       });
+      
+      // Redirect to dashboard after successful sign in
+      navigate("/dashboard");
     } catch (error) {
       toast({
         title: "Something went wrong",
@@ -61,15 +64,24 @@ const SignIn = () => {
       {/* Modern animated background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-[#f8f8f8] opacity-90"></div>
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-[#F97316]/20 blur-xl animate-pulse-orange-red"></div>
-        <div className="absolute top-40 right-20 w-40 h-40 rounded-full bg-[#ea384c]/20 blur-xl animate-pulse-orange-red"></div>
-        <div className="absolute bottom-40 left-1/4 w-56 h-56 rounded-full bg-[#F97316]/30 blur-xl animate-pulse-orange-red"></div>
-        <div className="absolute bottom-60 right-1/4 w-48 h-48 rounded-full bg-[#ea384c]/20 blur-xl animate-pulse-orange-red"></div>
         
-        {/* Modern geometric patterns */}
-        <div className="absolute inset-0 bright-diagonal opacity-10"></div>
-        <div className="absolute right-0 bottom-0 w-64 h-64 bg-[#FEC6A1]/20 rounded-tl-[30%] blur-lg"></div>
-        <div className="absolute left-0 top-0 w-72 h-72 bg-[#FEC6A1]/10 rounded-br-[40%] blur-lg"></div>
+        {/* Larger, more vibrant gradient blobs */}
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-[#F97316]/15 blur-3xl animate-pulse-orange-red"></div>
+        <div className="absolute top-40 right-20 w-72 h-72 rounded-full bg-[#ea384c]/15 blur-3xl animate-pulse-orange-red"></div>
+        <div className="absolute bottom-40 left-1/4 w-96 h-96 rounded-full bg-[#F97316]/20 blur-3xl animate-pulse-orange-red"></div>
+        <div className="absolute bottom-60 right-1/4 w-80 h-80 rounded-full bg-[#ea384c]/15 blur-3xl animate-pulse-orange-red"></div>
+        
+        {/* Modern geometric elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#FEC6A1]/10 rounded-bl-[30%] blur-xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-[#FEC6A1]/10 rounded-tr-[40%] blur-xl"></div>
+        
+        {/* Subtle patterns */}
+        <div className="absolute inset-0 bright-dots opacity-[0.03]"></div>
+        <div className="absolute inset-0 bright-diagonal opacity-[0.02]"></div>
+        
+        {/* Decorative lines */}
+        <div className="absolute left-10 top-1/3 w-24 h-[1px] bg-gradient-to-r from-[#F97316]/50 to-transparent"></div>
+        <div className="absolute right-10 top-2/3 w-24 h-[1px] bg-gradient-to-l from-[#ea384c]/50 to-transparent"></div>
       </div>
       
       <div className="w-full max-w-md space-y-8 relative z-10">
@@ -89,7 +101,7 @@ const SignIn = () => {
         </div>
         
         {/* Form */}
-        <div className="bg-white p-8 rounded-xl shadow-colorful border border-[#F97316]/10 backdrop-blur-sm relative overflow-hidden">
+        <div className="glass-card p-8 rounded-xl shadow-colorful border border-[#F97316]/10 backdrop-blur-sm relative overflow-hidden">
           {/* Decorative elements inside the form */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#F97316]/10 to-[#ea384c]/5 rounded-bl-[100px] -z-0"></div>
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#F97316]/10 to-[#ea384c]/5 rounded-tr-[100px] -z-0"></div>
