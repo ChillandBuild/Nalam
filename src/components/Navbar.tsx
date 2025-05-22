@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, Home, Search } from "lucide-react";
+import { Heart, Home, Search, Menu, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   NavigationMenu,
@@ -28,11 +28,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="py-4 w-full bg-white shadow-sm sticky top-0 z-50">
+    <nav className="py-4 w-full bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-[#F97316]/10">
       <div className="container px-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#F97316] flex items-center justify-center">
+          <Link to="/" className="flex items-center gap-2 transition-transform hover:scale-105">
+            <div className="w-8 h-8 rounded-full bg-[#F97316] flex items-center justify-center shadow-md">
               <Heart className="w-5 h-5 text-white fill-white" />
             </div>
             <div className="flex flex-col">
@@ -42,22 +42,22 @@ const Navbar = () => {
           </Link>
         </div>
         
-        {/* Navigation Links with curvy design */}
+        {/* Navigation Links with modern design */}
         <div className="hidden md:flex items-center gap-4">
           {/* Home link with icon */}
-          <a 
-            href="/" 
-            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1 px-4 py-2 rounded-full bg-[#FFF7ED] border border-[#F97316]/20"
+          <Link 
+            to="/" 
+            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFF7ED] border border-[#F97316]/20 shadow-sm hover:shadow-md"
           >
             <Home className="w-4 h-4" />
             Home
-          </a>
+          </Link>
           
           {/* Search component with "View More Food Analysis" tab */}
           <div className="relative">
             <Link
               to="/search"
-              className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1 px-4 py-2 rounded-full bg-[#FFF7ED] border border-[#F97316]/20"
+              className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FFF7ED] border border-[#F97316]/20 shadow-sm hover:shadow-md"
             >
               <Search className="w-4 h-4" />
               <span>Search</span>
@@ -67,25 +67,25 @@ const Navbar = () => {
           {/* Other navigation links */}
           <a 
             href="#features" 
-            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED] border border-transparent hover:border-[#F97316]/20"
+            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
           >
             Features
           </a>
           <a 
             href="#how-it-works" 
-            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED] border border-transparent hover:border-[#F97316]/20"
+            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
           >
             How It Works
           </a>
           <a 
             href="#benefits" 
-            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED] border border-transparent hover:border-[#F97316]/20"
+            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
           >
             Benefits
           </a>
           <a 
             href="#faq" 
-            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED] border border-transparent hover:border-[#F97316]/20"
+            className="text-[#F97316] hover:text-[#ea384c] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
           >
             FAQ
           </a>
@@ -95,78 +95,80 @@ const Navbar = () => {
           <Link to="/signin">
             <Button 
               variant="outline" 
-              className="border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-full"
+              className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:border-[#F97316] hover:text-[#ea384c] rounded-full"
             >
               Sign In
             </Button>
           </Link>
-          <Button 
-            className="bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white rounded-full"
-          >
-            Get Started
-          </Button>
+          <Link to="/signup">
+            <Button 
+              className="bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white rounded-full shadow-md"
+            >
+              Sign Up
+            </Button>
+          </Link>
         </div>
         
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-[#F97316]"
+          className="md:hidden text-[#F97316] p-1.5 rounded-full hover:bg-[#FFF7ED] border border-transparent hover:border-[#F97316]/20"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <X className="w-6 h-6" />
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <Menu className="w-6 h-6" />
           )}
         </button>
       </div>
       
-      {/* Mobile Menu with updated curvy styling */}
+      {/* Mobile Menu with updated modern styling */}
       {isMenuOpen && (
-        <div className="md:hidden absolute w-full bg-white shadow-lg z-50 animate-fade-in">
-          <div className="container px-4 mx-auto py-4 flex flex-col gap-4">
+        <div className="md:hidden absolute w-full bg-white/95 backdrop-blur-md shadow-lg z-50 animate-fade-in border-b border-[#F97316]/10">
+          <div className="container px-4 mx-auto py-4 flex flex-col gap-3">
             {/* Mobile Home */}
-            <a 
-              href="/" 
-              className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium flex items-center gap-1 px-4 rounded-full bg-[#FFF7ED]/50"
+            <Link 
+              to="/" 
+              className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full bg-[#FFF7ED]/80 border border-[#F97316]/20 shadow-sm"
+              onClick={() => setIsMenuOpen(false)}
             >
               <Home className="w-4 h-4" />
               Home
-            </a>
+            </Link>
             
             {/* Mobile Search */}
             <Link
               to="/search"
-              className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 font-medium flex items-center gap-1 px-4 rounded-full bg-[#FFF7ED]/50"
+              className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full bg-[#FFF7ED]/80 border border-[#F97316]/20 shadow-sm"
               onClick={() => setIsMenuOpen(false)}
             >
               <Search className="w-4 h-4" />
               Search
             </Link>
             
-            <a href="#features" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">Features</a>
-            <a href="#how-it-works" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">How It Works</a>
-            <a href="#benefits" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">Benefits</a>
-            <a href="#faq" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">FAQ</a>
+            <a href="#features" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20">Features</a>
+            <a href="#how-it-works" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20">How It Works</a>
+            <a href="#benefits" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20">Benefits</a>
+            <a href="#faq" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2.5 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20">FAQ</a>
             
-            <div className="flex flex-col gap-2 pt-2">
+            <div className="flex flex-col gap-3 pt-2">
               <Link to="/signin">
                 <Button 
                   variant="outline" 
-                  className="border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white w-full rounded-full"
+                  className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:text-[#ea384c] w-full rounded-full"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign In
                 </Button>
               </Link>
-              <Button 
-                className="bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white w-full rounded-full"
-              >
-                Get Started
-              </Button>
+              <Link to="/signup">
+                <Button 
+                  className="bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white w-full rounded-full shadow-md"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Sign Up
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

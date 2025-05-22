@@ -12,38 +12,47 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-const signInSchema = z.object({
+const signUpSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  rememberMe: z.boolean().default(false),
+  confirmPassword: z.string().min(6, "Password must be at least 6 characters"),
+  agreeTerms: z.boolean().refine((val) => val === true, {
+    message: "You must agree to the terms and conditions",
+  }),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords do not match",
+  path: ["confirmPassword"],
 });
 
-const SignIn = () => {
+const SignUp = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof signInSchema>>({
-    resolver: zodResolver(signInSchema),
+  const form = useForm<z.infer<typeof signUpSchema>>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
-      rememberMe: false,
+      confirmPassword: "",
+      agreeTerms: false,
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof signInSchema>) => {
+  const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     setIsLoading(true);
     
     try {
       // Here you would normally connect to your authentication service
-      console.log("Sign in data:", data);
+      console.log("Sign up data:", data);
       
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
-        title: "Sign in successful!",
-        description: "Welcome back to Nalam",
+        title: "Sign up successful!",
+        description: "Welcome to Nalam!",
       });
     } catch (error) {
       toast({
@@ -84,8 +93,8 @@ const SignIn = () => {
               <p className="text-xs text-nalam-earth-dark">Making sustainable choices easier</p>
             </div>
           </Link>
-          <h2 className="text-3xl font-semibold text-center bg-clip-text text-transparent bg-gradient-to-r from-[#F97316] to-[#ea384c]">Welcome Back</h2>
-          <p className="text-[#F97316] text-center">Sign in to your Nalam account</p>
+          <h2 className="text-3xl font-semibold text-center bg-clip-text text-transparent bg-gradient-to-r from-[#F97316] to-[#ea384c]">Join Nalam Today</h2>
+          <p className="text-[#F97316] text-center">Create your account to start your sustainable journey</p>
         </div>
         
         {/* Form */}
@@ -95,7 +104,25 @@ const SignIn = () => {
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#F97316]/10 to-[#ea384c]/5 rounded-tr-[100px] -z-0"></div>
           
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative z-10">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 relative z-10">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-700">Full Name</FormLabel>
+                    <FormControl>
+                      <Input 
+                        className="colorful-input" 
+                        placeholder="John Doe" 
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
               <FormField
                 control={form.control}
                 name="email"
@@ -115,56 +142,76 @@ const SignIn = () => {
                 )}
               />
               
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-gray-700">Password</FormLabel>
-                    <FormControl>
-                      <Input 
-                        className="colorful-input" 
-                        placeholder="••••••••" 
-                        type="password" 
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <div className="flex items-center justify-between">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="rememberMe"
+                  name="password"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center space-x-2 space-y-0">
+                    <FormItem>
+                      <FormLabel className="text-gray-700">Password</FormLabel>
                       <FormControl>
-                        <Checkbox 
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                          className="border-[#F97316] data-[state=checked]:bg-[#F97316] data-[state=checked]:border-[#F97316]" 
+                        <Input 
+                          className="colorful-input" 
+                          placeholder="••••••••" 
+                          type="password" 
+                          {...field} 
                         />
                       </FormControl>
-                      <FormLabel className="text-sm text-gray-700">Remember me</FormLabel>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
                 
-                <Link to="/forgot-password" className="text-sm text-[#F97316] hover:text-[#ea384c]">
-                  Forgot password?
-                </Link>
+                <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700">Confirm Password</FormLabel>
+                      <FormControl>
+                        <Input 
+                          className="colorful-input" 
+                          placeholder="••••••••" 
+                          type="password" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
+              
+              <FormField
+                control={form.control}
+                name="agreeTerms"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0 pt-2">
+                    <FormControl>
+                      <Checkbox 
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        className="border-[#F97316] data-[state=checked]:bg-[#F97316] data-[state=checked]:border-[#F97316]" 
+                      />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel className="text-sm text-gray-700">
+                        I agree to the <Link to="/terms" className="text-[#F97316] hover:text-[#ea384c] underline">Terms of Service</Link> and <Link to="/privacy" className="text-[#F97316] hover:text-[#ea384c] underline">Privacy Policy</Link>
+                      </FormLabel>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
               
               <Button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white rounded-full shadow-md transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white rounded-full shadow-md transition-all duration-300 flex items-center justify-center gap-2 mt-6 overflow-hidden group"
                 disabled={isLoading}
               >
-                {isLoading ? "Signing in..." : (
+                {isLoading ? "Creating account..." : (
                   <>
-                    Sign In
+                    Create Account
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </>
                 )}
@@ -174,9 +221,9 @@ const SignIn = () => {
           
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
-              Don't have an account?{" "}
-              <Link to="/signup" className="text-[#F97316] hover:text-[#ea384c] font-medium">
-                Sign up
+              Already have an account?{" "}
+              <Link to="/signin" className="text-[#F97316] hover:text-[#ea384c] font-medium">
+                Sign in
               </Link>
             </p>
           </div>
@@ -186,4 +233,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
