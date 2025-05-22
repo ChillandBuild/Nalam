@@ -9,7 +9,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { supabase } from "@/lib/supabase";
 import * as z from "zod";
+import { cleanupAuthState } from "@/lib/auth-utils";
 
 const signUpSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -44,23 +46,42 @@ const SignUp = () => {
     setIsLoading(true);
     
     try {
-      // Here you would normally connect to your authentication service
-      console.log("Sign up data:", data);
+      // Clean up existing auth state to prevent conflicts
+      cleanupAuthState();
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Try to sign out any previous session globally
+      try {
+        await supabase.auth.signOut({ scope: 'global' });
+      } catch (err) {
+        // Continue even if this fails
+      }
+      
+      // Register the user with Supabase
+      const { error } = await supabase.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: {
+          data: {
+            full_name: data.name,
+          }
+        }
+      });
+      
+      if (error) {
+        throw error;
+      }
       
       toast({
-        title: "Sign up successful!",
-        description: "Welcome to Nalam!",
+        title: "Account created successfully!",
+        description: "Please check your email for the confirmation link.",
       });
       
       // Redirect to dashboard after successful sign up
       navigate("/dashboard");
-    } catch (error) {
+    } catch (error: any) {
       toast({
-        title: "Something went wrong",
-        description: "Please try again later",
+        title: "Failed to create account",
+        description: error.message || "Something went wrong. Please try again later.",
         variant: "destructive",
       });
     } finally {
