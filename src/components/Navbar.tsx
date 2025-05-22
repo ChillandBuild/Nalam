@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -91,12 +92,14 @@ const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center gap-4">
-          <Button 
-            variant="outline" 
-            className="border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-full"
-          >
-            Sign In
-          </Button>
+          <Link to="/signin">
+            <Button 
+              variant="outline" 
+              className="border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-full"
+            >
+              Sign In
+            </Button>
+          </Link>
           <Button 
             className="bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white rounded-full"
           >
@@ -150,12 +153,15 @@ const Navbar = () => {
             <a href="#faq" className="text-[#F97316] hover:text-[#ea384c] transition-colors py-2 px-4 font-medium rounded-full hover:bg-[#FFF7ED]/50">FAQ</a>
             
             <div className="flex flex-col gap-2 pt-2">
-              <Button 
-                variant="outline" 
-                className="border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white w-full rounded-full"
-              >
-                Sign In
-              </Button>
+              <Link to="/signin">
+                <Button 
+                  variant="outline" 
+                  className="border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white w-full rounded-full"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Sign In
+                </Button>
+              </Link>
               <Button 
                 className="bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white w-full rounded-full"
               >
