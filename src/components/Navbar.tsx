@@ -1,79 +1,130 @@
+
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Heart, Home, Search, Menu, X } from "lucide-react";
+import { Heart, Home, Search, Menu, X, ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const location = useLocation();
   
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="py-4 w-full bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-[#F97316]/10">
+    <nav 
+      className={`py-4 w-full backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? "bg-white/90 shadow-md border-b border-[#F97316]/10" 
+          : "bg-white/70 border-b border-transparent"
+      }`}
+    >
       <div className="container px-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center gap-2 transition-transform hover:scale-105">
-            <div className="w-8 h-8 rounded-full bg-[#F97316] flex items-center justify-center shadow-md">
-              <Heart className="w-5 h-5 text-white fill-white" />
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 transition-all duration-300 hover:scale-105 group"
+          >
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#F97316] to-[#ea384c] flex items-center justify-center shadow-lg group-hover:shadow-[#F97316]/30 transition-all duration-300">
+              <Heart className="w-5 h-5 text-white fill-white animate-pulse-orange-red" />
             </div>
             <div className="flex flex-col">
-              <h1 className="font-['Hugh_is_Life'] text-2xl text-nalam-earth-dark tracking-wide">Nalam</h1>
-              <p className="text-xs text-nalam-earth-dark">Making sustainable choices easier</p>
+              <h1 className="font-['Hugh_is_Life'] text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#F97316] to-[#ea384c] tracking-wide">Nalam</h1>
+              <p className="text-xs text-nalam-earth-dark/80">Making sustainable choices easier</p>
             </div>
           </Link>
         </div>
         
         {/* Navigation Links with modern design */}
         <div className="hidden md:flex items-center gap-4">
-          {/* Home link with icon */}
+          {/* Home link with icon and hover animation */}
           <Link 
             to="/" 
-            className={`transition-colors font-medium flex items-center gap-1.5 px-4 py-2 rounded-full border ${
+            className={`transition-all duration-300 font-medium flex items-center gap-1.5 px-4 py-2 rounded-full border relative overflow-hidden ${
               location.pathname === "/" 
-              ? "text-[#F97316] bg-[#FFF7ED] border-[#F97316]/20 shadow-sm" 
-              : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/60 hover:border-[#F97316]/20 hover:shadow-sm"
+              ? "text-white border-transparent shadow-md" 
+              : "text-gray-600 border-transparent hover:text-[#F97316] hover:border-[#F97316]/20"
             }`}
+            onMouseEnter={() => setHoveredItem("home")}
+            onMouseLeave={() => setHoveredItem(null)}
           >
-            <Home className="w-4 h-4" />
+            {location.pathname === "/" && (
+              <span className="absolute inset-0 bg-gradient-to-r from-[#F97316] to-[#ea384c] -z-10"></span>
+            )}
+            {hoveredItem === "home" && location.pathname !== "/" && (
+              <span className="absolute inset-0 bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 -z-10 animate-scale"></span>
+            )}
+            <Home className={`w-4 h-4 ${location.pathname === "/" ? "text-white" : ""}`} />
             Home
           </Link>
           
-          {/* Search link with icon */}
+          {/* Search link with icon and animation */}
           <Link
             to="/search"
-            className={`transition-colors font-medium flex items-center gap-1.5 px-4 py-2 rounded-full border ${
+            className={`transition-all duration-300 font-medium flex items-center gap-1.5 px-4 py-2 rounded-full border relative overflow-hidden ${
               location.pathname === "/search" 
-              ? "text-[#F97316] bg-[#FFF7ED] border-[#F97316]/20 shadow-sm" 
-              : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/60 hover:border-[#F97316]/20 hover:shadow-sm"
+              ? "text-white border-transparent shadow-md" 
+              : "text-gray-600 border-transparent hover:text-[#F97316] hover:border-[#F97316]/20"
             }`}
+            onMouseEnter={() => setHoveredItem("search")}
+            onMouseLeave={() => setHoveredItem(null)}
           >
-            <Search className="w-4 h-4" />
+            {location.pathname === "/search" && (
+              <span className="absolute inset-0 bg-gradient-to-r from-[#F97316] to-[#ea384c] -z-10"></span>
+            )}
+            {hoveredItem === "search" && location.pathname !== "/search" && (
+              <span className="absolute inset-0 bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 -z-10 animate-scale"></span>
+            )}
+            <Search className={`w-4 h-4 ${location.pathname === "/search" ? "text-white" : ""}`} />
             <span>Search</span>
           </Link>
           
-          {/* Other navigation links */}
-          <a 
-            href="#features" 
-            className="text-gray-600 hover:text-[#F97316] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
-          >
-            Features
-          </a>
+          {/* Features dropdown with animation */}
+          <div className="relative group">
+            <a 
+              href="#features" 
+              className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 flex items-center gap-1.5"
+            >
+              Features
+              <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+            </a>
+            <div className="absolute top-full left-0 mt-1 w-48 bg-white/90 backdrop-blur-md shadow-lg rounded-xl border border-[#F97316]/10 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
+              <a href="#scanner" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#F97316] transition-colors">Product Scanner</a>
+              <a href="#food-analyzer" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#F97316] transition-colors">Food Analyzer</a>
+              <a href="#eco-score" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#F97316] transition-colors">Eco Score</a>
+            </div>
+          </div>
+          
           <a 
             href="#how-it-works" 
-            className="text-gray-600 hover:text-[#F97316] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
           >
             How It Works
           </a>
           <a 
             href="#benefits" 
-            className="text-gray-600 hover:text-[#F97316] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
           >
             Benefits
           </a>
           <a 
             href="#faq" 
-            className="text-gray-600 hover:text-[#F97316] transition-colors font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
+            className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 rounded-full hover:bg-[#FFF7ED]/60 border border-transparent hover:border-[#F97316]/20 hover:shadow-sm"
           >
             FAQ
           </a>
@@ -84,7 +135,7 @@ const Navbar = () => {
             <Link to="/">
               <Button 
                 variant="outline" 
-                className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:border-[#F97316] hover:text-[#ea384c] rounded-full"
+                className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:border-[#F97316] hover:text-[#ea384c] rounded-full transition-all duration-300"
               >
                 Sign Out
               </Button>
@@ -94,14 +145,14 @@ const Navbar = () => {
               <Link to="/signin">
                 <Button 
                   variant="outline" 
-                  className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:border-[#F97316] hover:text-[#ea384c] rounded-full"
+                  className="border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:border-[#F97316] hover:text-[#ea384c] rounded-full transition-all duration-300"
                 >
                   Sign In
                 </Button>
               </Link>
               <Link to="/signup">
                 <Button 
-                  className="bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white rounded-full shadow-md"
+                  className="bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:opacity-90 text-white rounded-full shadow-md hover:shadow-lg hover:shadow-[#F97316]/20 transition-all duration-300"
                 >
                   Sign Up
                 </Button>
@@ -110,13 +161,13 @@ const Navbar = () => {
           )}
         </div>
         
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button with animation */}
         <button 
           className="md:hidden text-[#F97316] p-1.5 rounded-full hover:bg-[#FFF7ED] border border-transparent hover:border-[#F97316]/20"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
-            <X className="w-6 h-6" />
+            <X className="w-6 h-6 animate-scale" />
           ) : (
             <Menu className="w-6 h-6" />
           )}
@@ -127,12 +178,12 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute w-full bg-white/95 backdrop-blur-md shadow-lg z-50 animate-fade-in border-b border-[#F97316]/10">
           <div className="container px-4 mx-auto py-4 flex flex-col gap-3">
-            {/* Mobile Home */}
+            {/* Mobile nav items */}
             <Link 
               to="/" 
               className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
                 location.pathname === "/" 
-                ? "text-[#F97316] bg-[#FFF7ED]/80 border-[#F97316]/20 shadow-sm" 
+                ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
                 : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/60 hover:border-[#F97316]/20"
               }`}
               onClick={closeMenu}
@@ -146,7 +197,7 @@ const Navbar = () => {
               to="/search"
               className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
                 location.pathname === "/search" 
-                ? "text-[#F97316] bg-[#FFF7ED]/80 border-[#F97316]/20 shadow-sm" 
+                ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
                 : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/60 hover:border-[#F97316]/20"
               }`}
               onClick={closeMenu}
@@ -160,7 +211,7 @@ const Navbar = () => {
               to="/dashboard"
               className={`transition-colors py-2.5 font-medium flex items-center gap-1.5 px-4 rounded-full border ${
                 location.pathname === "/dashboard" 
-                ? "text-[#F97316] bg-[#FFF7ED]/80 border-[#F97316]/20 shadow-sm" 
+                ? "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white border-transparent" 
                 : "text-gray-600 border-transparent hover:text-[#F97316] hover:bg-[#FFF7ED]/60 hover:border-[#F97316]/20"
               }`}
               onClick={closeMenu}
