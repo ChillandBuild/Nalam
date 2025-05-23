@@ -62,7 +62,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Enhanced food and sustainability themed colors
+				// Enhanced Nalam theme colors with vibrant orange and red
 				nalam: {
 					orange: {
 						light: '#FFEDD5',
@@ -76,66 +76,21 @@ export default {
 						dark: '#B91C1C',
 						vibrant: '#FF2D55',
 					},
-					// New nature-themed colors
-					green: {
-						light: '#DCFCE7',
-						DEFAULT: '#22C55E',
-						dark: '#15803D',
-						vibrant: '#00CC66',
-					},
 					earth: {
 						light: '#D7CCC8',
 						DEFAULT: '#A1887F',
 						dark: '#5D4037',
-						vibrant: '#8D6E63',
 					},
-					leaf: {
-						light: '#E0F2F1',
-						DEFAULT: '#66BB6A',
-						dark: '#388E3C',
-						vibrant: '#00E676',
-					},
-					sky: {
-						light: '#E1F5FE',
-						DEFAULT: '#81D4FA',
-						dark: '#0288D1',
-						vibrant: '#29B6F6',
-					},
-					sun: {
-						light: '#FFF8E1',
-						DEFAULT: '#FFD54F',
-						dark: '#FFB300',
-						vibrant: '#FFEA00',
-					},
-					// Additional colors
+					leaf: '#66BB6A',
+					sky: '#81D4FA',
+					sun: '#FFD54F',
+					// Additional vibrant colors
 					peach: '#FEC6A1',
 					coral: '#FF8A65',
 					amber: '#FFAB40',
 					rose: '#FF80AB',
-					mint: {
-						light: '#E0F7FA',
-						DEFAULT: '#80DEEA',
-						dark: '#00ACC1',
-						vibrant: '#1DE9B6',
-					},
+					mint: '#80DEEA',
 					lavender: '#B39DDB',
-					// Soil and organic colors
-					soil: {
-						light: '#EFEBE9',
-						DEFAULT: '#8D6E63',
-						dark: '#4E342E',
-					},
-					berry: {
-						light: '#F8BBD0',
-						DEFAULT: '#EC407A',
-						dark: '#C2185B',
-					},
-					// Natural food colors
-					carrot: '#FF5722',
-					tomato: '#E53935',
-					cucumber: '#66BB6A',
-					eggplant: '#5E35B1',
-					wheat: '#FFD600',
 				},
 			},
 			borderRadius: {
@@ -208,7 +163,6 @@ export default {
 				'tangerine': ['Tangerine', 'cursive'],
 			},
 			backgroundImage: {
-				// Enhanced gradients for food and sustainability
 				'orange-red-gradient': 'linear-gradient(90deg, #F97316, #ea384c)',
 				'orange-red-light': 'linear-gradient(90deg, rgba(249, 115, 22, 0.2), rgba(234, 56, 76, 0.2))',
 				'orange-peach-gradient': 'linear-gradient(90deg, #F97316, #FEC6A1)',
@@ -216,14 +170,6 @@ export default {
 				'vibrant-gradient': 'linear-gradient(45deg, #F97316, #ea384c, #FEC6A1)',
 				'sunrise-gradient': 'linear-gradient(to top, #F97316, #FFD54F)',
 				'sunset-gradient': 'linear-gradient(to bottom, #ea384c, #F97316)',
-				// New nature and sustainability gradients
-				'forest-gradient': 'linear-gradient(90deg, #388E3C, #66BB6A)',
-				'garden-gradient': 'linear-gradient(90deg, #66BB6A, #CCFF90)',
-				'ocean-gradient': 'linear-gradient(90deg, #0288D1, #81D4FA)',
-				'earth-gradient': 'linear-gradient(90deg, #795548, #A1887F)',
-				'fresh-gradient': 'linear-gradient(45deg, #66BB6A, #81D4FA, #FFD54F)',
-				'eco-gradient': 'linear-gradient(to right, #22C55E, #0288D1)',
-				'natural-gradient': 'linear-gradient(to bottom, #66BB6A, #FFEB3B)',
 			},
 			spacing: {
 				'18': '4.5rem',

@@ -30,7 +30,7 @@ const NavItem = ({
   const linkClass = `transition-all duration-300 font-medium flex items-center gap-1.5 px-4 py-2 border rounded-full relative overflow-hidden backdrop-blur-md ${
     isActive 
     ? "text-white border-transparent" 
-    : "text-gray-600 border-transparent hover:text-nalam-green hover:border-nalam-green/20"
+    : "text-gray-600 border-transparent hover:text-[#F97316] hover:border-[#F97316]/20"
   }`;
   
   if (isHashLink) {
@@ -43,10 +43,10 @@ const NavItem = ({
         onMouseLeave={onMouseLeave}
       >
         {isActive && (
-          <span className="absolute inset-0 bg-gradient-to-r from-nalam-green to-nalam-leaf -z-10"></span>
+          <span className="absolute inset-0 bg-gradient-to-r from-[#F97316] to-[#ea384c] -z-10"></span>
         )}
         {hoveredItem === itemName && !isActive && (
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent border border-nalam-green/20 -z-10 animate-scale"></span>
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent border border-[#F97316]/20 -z-10 animate-scale"></span>
         )}
         {icon}
         {children}
@@ -61,10 +61,10 @@ const NavItem = ({
         onMouseLeave={onMouseLeave}
       >
         {isActive && (
-          <span className="absolute inset-0 bg-gradient-to-r from-nalam-green to-nalam-leaf -z-10"></span>
+          <span className="absolute inset-0 bg-gradient-to-r from-[#F97316] to-[#ea384c] -z-10"></span>
         )}
         {hoveredItem === itemName && !isActive && (
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent border border-nalam-green/20 -z-10 animate-scale"></span>
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent border border-[#F97316]/20 -z-10 animate-scale"></span>
         )}
         {icon}
         {children}
