@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Logo from "./navbar/Logo";
@@ -30,7 +31,9 @@ const Navbar = () => {
 
   return (
     <nav 
-      className="py-4 w-full absolute top-0 left-0 bg-transparent backdrop-blur-sm transition-all duration-300"
+      className={`py-4 w-full fixed top-0 left-0 bg-transparent backdrop-blur-sm transition-all duration-300 z-50 ${
+        scrolled ? "bg-white/80 shadow-sm" : ""
+      }`}
     >
       <div className="container px-4 mx-auto flex items-center justify-between drop-shadow-sm">
         <div className="flex items-center">

@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import NavLink from "./NavLink";
 import AuthButtons from "./AuthButtons";
 
@@ -13,7 +14,7 @@ const MobileMenu = ({ isOpen, currentPath, closeMenu }: MobileMenuProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="md:hidden absolute w-full bg-gradient-to-b from-white/70 to-transparent backdrop-blur-xl shadow-lg z-50 animate-fade-in">
+    <div className="md:hidden absolute w-full bg-white/95 backdrop-blur-xl shadow-lg z-50 animate-fade-in top-[72px]">
       <div className="container px-4 mx-auto py-4 flex flex-col gap-3">
         <Link 
           to="/" 
@@ -51,10 +52,18 @@ const MobileMenu = ({ isOpen, currentPath, closeMenu }: MobileMenuProps) => {
           Dashboard
         </Link>
         
-        <NavLink href="#features" onClick={closeMenu}>Features</NavLink>
-        <NavLink href="#how-it-works" onClick={closeMenu}>How It Works</NavLink>
-        <NavLink href="#benefits" onClick={closeMenu}>Benefits</NavLink>
-        <NavLink href="#faq" onClick={closeMenu}>FAQ</NavLink>
+        <HashLink smooth to="/#features" className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>
+          Features
+        </HashLink>
+        <HashLink smooth to="/#how-it-works" className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>
+          How It Works
+        </HashLink>
+        <HashLink smooth to="/#benefits" className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>
+          Benefits
+        </HashLink>
+        <HashLink smooth to="/#faq" className="text-gray-600 hover:text-[#F97316] transition-all duration-300 font-medium px-4 py-2 hover:bg-[#FFF7ED]/10 border border-transparent hover:border-[#F97316]/20" onClick={closeMenu}>
+          FAQ
+        </HashLink>
         
         <div className="flex flex-col gap-3 pt-2">
           <AuthButtons isOnDashboard={currentPath === "/dashboard"} onClick={closeMenu} />

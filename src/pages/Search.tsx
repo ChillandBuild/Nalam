@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navbar from "../components/Navbar";
@@ -42,7 +43,8 @@ const Search = () => {
       </div>
       
       <Navbar />
-      <main className="flex-1 container px-4 py-8 md:py-12 mx-auto pt-32">
+      
+      <main className="flex-1 container px-4 py-8 md:py-12 mx-auto pt-36 md:pt-32">
         <div className="text-center mb-8 md:mb-12 relative">
           <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-40 h-12 bg-[#F97316]/10 blur-xl"></div>
           

@@ -8,6 +8,10 @@ import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 import HealthCards from "../components/HealthCards";
 
+interface SectionProps {
+  id?: string;
+}
+
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
@@ -44,11 +48,11 @@ const Index = () => {
       <Navbar />
       <Hero />
       <section id="search" className="pt-24">{/* Search section content here if any */}</section>
-      <Features id="features" />
-      <HowItWorks id="how-it-works" />
+      <Features />
+      <HowItWorks />
       <HealthCards />
-      <Benefits id="benefits" />
-      <FAQ id="faq" />
+      <Benefits />
+      <FAQ />
       <CTASection />
       <Footer />
     </div>
