@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -159,7 +158,9 @@ export default {
 			fontFamily: {
 				'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
 				'display': ['Poppins', 'ui-sans-serif', 'system-ui'],
-				'hugh': ['"Hugh is Life"', 'cursive']
+				'hugh': ['"Hugh is Life"', 'cursive'],
+				'quicksand': ['Quicksand', 'sans-serif'],
+				'tangerine': ['Tangerine', 'cursive'],
 			},
 			backgroundImage: {
 				'orange-red-gradient': 'linear-gradient(90deg, #F97316, #ea384c)',

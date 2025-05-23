@@ -106,7 +106,7 @@ const SignIn = () => {
               <Heart className="w-5 h-5 text-white fill-white" />
             </div>
             <div className="flex flex-col">
-              <h1 className="font-['Hugh_is_Life'] text-2xl text-nalam-earth-dark tracking-wide">Nalam</h1>
+              <h1 className="font-tangerine text-4xl font-bold text-nalam-earth-dark tracking-wide">Nalam</h1>
               <p className="text-xs text-nalam-earth-dark">Making sustainable choices easier</p>
             </div>
           </Link>

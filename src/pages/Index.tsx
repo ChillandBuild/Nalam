@@ -1,4 +1,3 @@
-
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
@@ -44,11 +43,12 @@ const Index = () => {
       
       <Navbar />
       <Hero />
-      <Features />
-      <HowItWorks />
+      <section id="search" className="pt-24">{/* Search section content here if any */}</section>
+      <Features id="features" />
+      <HowItWorks id="how-it-works" />
       <HealthCards />
-      <Benefits />
-      <FAQ />
+      <Benefits id="benefits" />
+      <FAQ id="faq" />
       <CTASection />
       <Footer />
     </div>

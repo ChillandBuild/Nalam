@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Apple, Heart, Coffee, Search, Sparkles } from "lucide-react";
@@ -31,7 +30,7 @@ const Hero = () => {
   const randomFact = foodFacts[Math.floor(Math.random() * foodFacts.length)];
 
   return (
-    <section className="hero-gradient pt-10 pb-20 md:pt-20 md:pb-32 relative overflow-hidden">
+    <section className="hero-gradient pt-24 pb-20 md:pt-32 md:pb-32 relative overflow-hidden" id="hero">
       {/* Background elements - removed animations */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-[#f8f8f8] opacity-80"></div>

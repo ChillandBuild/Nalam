@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Logo from "./navbar/Logo";
@@ -31,13 +30,9 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`py-4 w-full sticky top-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? "bg-transparent/40 backdrop-blur-md" 
-          : "bg-transparent"
-      }`}
+      className="py-4 w-full absolute top-0 left-0 bg-transparent backdrop-blur-sm transition-all duration-300"
     >
-      <div className="container px-4 mx-auto flex items-center justify-between">
+      <div className="container px-4 mx-auto flex items-center justify-between drop-shadow-sm">
         <div className="flex items-center">
           <Logo />
         </div>
@@ -45,6 +40,7 @@ const Navbar = () => {
         {/* Navigation Links with modern design */}
         <DesktopNavLinks 
           currentPath={location.pathname} 
+          currentHash={location.hash}
           hoveredItem={hoveredItem} 
           setHoveredItem={setHoveredItem} 
         />
