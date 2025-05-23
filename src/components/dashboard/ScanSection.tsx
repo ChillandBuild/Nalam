@@ -1,5 +1,6 @@
+
 import { useState } from "react";
-import { Search, Camera } from "lucide-react";
+import { Search, Camera, Barcode } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -24,7 +25,7 @@ const ScanSection = () => {
           className={scanMode === 'barcode' ? 'bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white' : 'border-[#F97316] text-[#F97316]'}
           onClick={() => setScanMode('barcode')}
         >
-          <Search className="mr-2 h-5 w-5" />
+          <Barcode className="mr-2 h-5 w-5" />
           Barcode Scan
         </Button>
         
