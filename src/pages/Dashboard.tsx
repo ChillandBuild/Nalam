@@ -1,6 +1,7 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Heart, LogOut } from "lucide-react";
+import { Heart, LogOut, Info, Star, Target, Trophy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -27,7 +28,7 @@ const Dashboard = () => {
   // Simulate progress loading animation
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgress(70);
+      setProgress(0); // Start from 0 for new users
     }, 500);
     return () => clearTimeout(timer);
   }, []);
@@ -39,11 +40,18 @@ const Dashboard = () => {
     });
   };
 
-  // Get user name from auth context
+  // Get user name from auth context - start with zero points for new users
   const userName = user?.user_metadata?.full_name || "User";
-  const ecoPoints = 150;
-  const ecoLevel = "Eco Explorer";
-  const streak = 7;
+  const ecoPoints = 0; // Start from zero
+  const ecoLevel = "New Explorer"; // Starting level
+  const streak = 0; // Start from zero
+
+  const pointsEarningMethods = [
+    { icon: <Target className="w-5 h-5" />, action: "Scan a product", points: 5 },
+    { icon: <Star className="w-5 h-5" />, action: "Complete daily check-in", points: 10 },
+    { icon: <Trophy className="w-5 h-5" />, action: "Try EcoTrivia", points: 15 },
+    { icon: <Heart className="w-5 h-5" />, action: "Make sustainable swap", points: 20 },
+  ];
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -75,19 +83,38 @@ const Dashboard = () => {
                     <span className="text-lg font-medium text-[#F97316]">{streak} days</span>
                   </div>
                 </div>
+                
+                {/* How to Earn Points Section */}
+                <div className="mt-6 p-4 bg-[#FFF7ED] rounded-lg border border-[#F97316]/20">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Info className="w-4 h-4 text-[#F97316]" />
+                    <h3 className="text-sm font-medium text-[#F97316]">How to Earn Points</h3>
+                  </div>
+                  <div className="space-y-2">
+                    {pointsEarningMethods.map((method, index) => (
+                      <div key={index} className="flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#F97316]">{method.icon}</span>
+                          <span className="text-gray-600">{method.action}</span>
+                        </div>
+                        <span className="font-medium text-[#F97316]">+{method.points}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
             
             {/* Action Area */}
             <div className="lg:col-span-1 order-2">
               <div className="glass-card p-6 animate-fade-in" style={{animationDelay: "0.1s"}}>
-                <h2 className="text-2xl font-semibold mb-6">Actions</h2>
+                <h2 className="text-2xl font-semibold mb-6">Start Your Journey</h2>
                 <div className="space-y-4">
                   <Button 
                     onClick={() => setActiveTab("scan")} 
                     className="w-full bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white hover:opacity-90 transition-all duration-300"
                   >
-                    Scan Product
+                    Scan Your First Product (+5 points)
                   </Button>
                   
                   <div className="relative">
@@ -107,7 +134,7 @@ const Dashboard = () => {
                   </Button>
                   
                   <div className="p-4 bg-[#FFF7ED] rounded-lg border border-[#F97316]/20 mt-4">
-                    <p className="text-sm text-gray-600">💡 Tip: Swap chips for popcorn to cut sodium!</p>
+                    <p className="text-sm text-gray-600">💡 Tip: Start by scanning a product to earn your first 5 EcoPoints!</p>
                     <button 
                       onClick={() => handleButtonClick("See More Tips")} 
                       className="text-sm text-[#F97316] mt-2 hover:underline"
@@ -126,16 +153,17 @@ const Dashboard = () => {
                 <div className="space-y-6">
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-600">EcoPoints</span>
-                      <span className="font-medium">{ecoPoints}/200</span>
+                      <span className="text-gray-600">EcoPoints to Next Level</span>
+                      <span className="font-medium">{ecoPoints}/50</span>
                     </div>
-                    <Progress value={75} className="h-2 bg-gray-100" />
+                    <Progress value={0} className="h-2 bg-gray-100" />
+                    <p className="text-xs text-gray-500 mt-1">Earn 50 points to reach "Eco Starter"</p>
                   </div>
                   
                   <div className="flex justify-between items-center p-3 bg-[#FFF7ED] rounded-lg border border-[#F97316]/20">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#F97316] to-[#ea384c] flex items-center justify-center text-white">
-                        🌿
+                        🌱
                       </div>
                       <span>{ecoLevel}</span>
                     </div>
@@ -152,14 +180,14 @@ const Dashboard = () => {
                       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#F97316] to-[#ea384c] flex items-center justify-center text-white">
                         🔥
                       </div>
-                      <span>{streak} Day Streak</span>
+                      <span>Start Your Streak</span>
                     </div>
                     <Button 
                       size="sm" 
                       onClick={() => handleButtonClick("Check In")} 
                       className="bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white hover:opacity-90"
                     >
-                      Check In
+                      Check In (+10)
                     </Button>
                   </div>
                   
@@ -167,15 +195,15 @@ const Dashboard = () => {
                     <Button 
                       onClick={() => handleButtonClick("Play EcoTrivia")} 
                       variant="outline"
-                      className="w-full border-[#F97316] text-[#F97316] hover:bg-[#F97316]/5"
+                      className="w-full border-[#F97316] text-[#F97316] hover:bg-[#F97316]/5 text-xs"
                     >
-                      Play EcoTrivia
+                      EcoTrivia (+15)
                     </Button>
                     <Button 
                       onClick={() => handleButtonClick("Try a Swap")} 
-                      className="w-full bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white hover:opacity-90"
+                      className="w-full bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white hover:opacity-90 text-xs"
                     >
-                      Try a Swap
+                      Eco Swap (+20)
                     </Button>
                   </div>
                 </div>
