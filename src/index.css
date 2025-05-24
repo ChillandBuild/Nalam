@@ -8,64 +8,64 @@
 @layer base {
   :root {
     --background: 46 20% 97%;
-    --foreground: 150 10% 20%;
+    --foreground: 20 10% 20%;
 
     --card: 46 20% 99%;
-    --card-foreground: 150 10% 20%;
+    --card-foreground: 20 10% 20%;
 
     --popover: 46 20% 99%;
-    --popover-foreground: 150 10% 20%;
+    --popover-foreground: 20 10% 20%;
 
-    --primary: 158 25% 35%;
+    --primary: 25 95% 53%;
     --primary-foreground: 46 20% 98%;
 
-    --secondary: 158 15% 85%;
-    --secondary-foreground: 150 10% 20%;
+    --secondary: 25 15% 85%;
+    --secondary-foreground: 20 10% 20%;
 
-    --muted: 158 15% 92%;
-    --muted-foreground: 150 7% 45%;
+    --muted: 25 15% 92%;
+    --muted-foreground: 20 7% 45%;
 
-    --accent: 158 15% 85%;
-    --accent-foreground: 150 10% 20%;
+    --accent: 25 15% 85%;
+    --accent-foreground: 20 10% 20%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 46 20% 98%;
 
-    --border: 158 15% 82%;
-    --input: 158 15% 82%;
-    --ring: 158 25% 35%;
+    --border: 25 15% 82%;
+    --input: 25 15% 82%;
+    --ring: 25 95% 53%;
 
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 150 30% 8%;
+    --background: 20 30% 8%;
     --foreground: 46 20% 90%;
 
-    --card: 150 25% 10%;
+    --card: 20 25% 10%;
     --card-foreground: 46 20% 90%;
 
-    --popover: 150 25% 10%;
+    --popover: 20 25% 10%;
     --popover-foreground: 46 20% 90%;
 
-    --primary: 158 25% 45%;
+    --primary: 25 95% 53%;
     --primary-foreground: 46 20% 98%;
 
-    --secondary: 150 20% 15%;
+    --secondary: 20 20% 15%;
     --secondary-foreground: 46 20% 90%;
 
-    --muted: 150 20% 15%;
-    --muted-foreground: 150 10% 70%;
+    --muted: 20 20% 15%;
+    --muted-foreground: 20 10% 70%;
 
-    --accent: 150 20% 15%;
+    --accent: 20 20% 15%;
     --accent-foreground: 46 20% 90%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 46 20% 90%;
 
-    --border: 150 20% 20%;
-    --input: 150 20% 20%;
-    --ring: 158 25% 45%;
+    --border: 20 20% 20%;
+    --input: 20 20% 20%;
+    --ring: 25 95% 53%;
   }
 }
 
@@ -76,12 +76,13 @@
 
   body {
     @apply bg-background text-foreground font-body;
-    background: linear-gradient(135deg, #FAF6E9 0%, #F5F5DC 50%, #D3EAE4 100%);
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 50%, #FED7AA 100%);
     line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-semibold text-nature-forest;
+    @apply font-heading font-semibold;
+    color: #F97316;
     line-height: 1.3;
   }
 
@@ -98,11 +99,11 @@
   }
 
   p {
-    @apply text-nature-earth-gray leading-relaxed;
+    @apply text-gray-700 leading-relaxed;
   }
 
   a {
-    @apply text-nature-forest hover:text-nature-sage transition-colors duration-300;
+    @apply text-[#F97316] hover:text-[#ea384c] transition-colors duration-300;
   }
 
   a:hover {
@@ -111,73 +112,73 @@
 }
 
 @layer components {
-  /* Nature-inspired component styles */
+  /* Orange/Red theme component styles */
   .nature-card {
-    @apply bg-white/90 backdrop-blur-sm rounded-2xl border border-nature-sage-light shadow-nature transition-all duration-300 hover:shadow-organic;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(250, 246, 233, 0.8));
+    @apply bg-white/90 backdrop-blur-sm rounded-2xl border border-orange-200 shadow-lg transition-all duration-300 hover:shadow-xl;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 247, 237, 0.8));
   }
   
   .earth-gradient {
-    @apply bg-gradient-to-br from-nature-sage to-nature-moss-light;
+    @apply bg-gradient-to-br from-[#F97316] to-[#ea384c];
   }
   
   .forest-gradient {
-    @apply bg-gradient-to-br from-nature-forest to-nature-forest-light;
+    @apply bg-gradient-to-br from-[#F97316] to-[#ea384c];
   }
   
   .nature-button {
     @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-xl transition-all duration-300;
-    @apply bg-nature-forest text-white hover:bg-nature-forest-light;
-    @apply shadow-nature hover:shadow-organic hover:scale-105;
+    @apply bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white hover:opacity-90;
+    @apply shadow-lg hover:shadow-xl hover:scale-105;
   }
   
   .nature-button-secondary {
     @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-xl transition-all duration-300;
-    @apply border-2 border-nature-sage text-nature-forest hover:bg-nature-sage hover:text-white;
-    @apply shadow-soft hover:shadow-nature;
+    @apply border-2 border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white;
+    @apply shadow-md hover:shadow-lg;
   }
   
   .nature-input {
-    @apply border-2 border-nature-sage/50 focus:border-nature-forest focus:ring-4 focus:ring-nature-sage/20;
-    @apply rounded-xl bg-white/80 backdrop-blur-sm shadow-soft transition-all duration-300;
+    @apply border-2 border-orange-300 focus:border-[#F97316] focus:ring-4 focus:ring-orange-200;
+    @apply rounded-xl bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300;
   }
   
   .organic-container {
     @apply relative overflow-hidden rounded-3xl;
-    background: linear-gradient(135deg, rgba(250, 246, 233, 0.9) 0%, rgba(245, 245, 220, 0.8) 100%);
+    background: linear-gradient(135deg, rgba(255, 247, 237, 0.9) 0%, rgba(255, 237, 213, 0.8) 100%);
   }
   
   .organic-container::before {
     content: "";
     @apply absolute inset-0 opacity-30;
-    background: radial-gradient(circle at 30% 20%, rgba(167, 203, 191, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(211, 234, 228, 0.3) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 20%, rgba(249, 115, 22, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(234, 56, 76, 0.3) 0%, transparent 50%);
   }
   
   .nature-badge {
     @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full;
-    @apply bg-nature-sage text-nature-forest shadow-soft;
+    @apply bg-orange-100 text-[#F97316] shadow-md;
   }
   
   .earth-badge {
     @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full;
-    @apply bg-nature-earth-terracotta text-white shadow-soft;
+    @apply bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white shadow-md;
   }
   
   .glass-nature {
-    @apply bg-white/70 backdrop-blur-md rounded-2xl border border-white/30 shadow-earth;
+    @apply bg-white/70 backdrop-blur-md rounded-2xl border border-orange-200 shadow-lg;
   }
   
   .nature-hover {
-    @apply transition-all duration-300 hover:shadow-organic hover:scale-[1.02];
+    @apply transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
   }
   
   .organic-text {
-    @apply bg-gradient-to-r from-nature-forest to-nature-sage bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#F97316] to-[#ea384c] bg-clip-text text-transparent;
   }
   
   .leaf-shadow {
-    filter: drop-shadow(0 4px 8px rgba(47, 88, 72, 0.2));
+    filter: drop-shadow(0 4px 8px rgba(249, 115, 22, 0.2));
   }
   
   /* Form elements */
@@ -186,7 +187,7 @@
   }
   
   .nature-label {
-    @apply text-sm font-medium text-nature-forest;
+    @apply text-sm font-medium text-[#F97316];
   }
   
   .nature-textarea {
@@ -199,37 +200,37 @@
   
   /* Navigation styles */
   .nature-nav {
-    @apply bg-white/80 backdrop-blur-md border-b border-nature-sage/20;
+    @apply bg-white/80 backdrop-blur-md border-b border-orange-200;
   }
   
   .nature-nav-link {
-    @apply text-nature-forest hover:text-nature-sage transition-colors duration-300 font-medium;
+    @apply text-gray-600 hover:text-[#F97316] transition-colors duration-300 font-medium;
   }
   
   .nature-nav-link.active {
-    @apply text-nature-forest border-b-2 border-nature-sage;
+    @apply text-[#F97316] border-b-2 border-[#F97316];
   }
   
   /* Status indicators */
   .status-positive {
-    @apply bg-nature-sage text-nature-forest;
+    @apply bg-green-100 text-green-800;
   }
   
   .status-warning {
-    @apply bg-nature-earth-terracotta text-white;
+    @apply bg-orange-100 text-[#F97316];
   }
   
   .status-info {
-    @apply bg-nature-water text-nature-forest;
+    @apply bg-blue-100 text-blue-800;
   }
   
   /* Progress bars */
   .nature-progress {
-    @apply bg-nature-moss-light rounded-full overflow-hidden;
+    @apply bg-orange-100 rounded-full overflow-hidden;
   }
   
   .nature-progress-bar {
-    @apply bg-gradient-to-r from-nature-sage to-nature-forest h-full transition-all duration-500 ease-out;
+    @apply bg-gradient-to-r from-[#F97316] to-[#ea384c] h-full transition-all duration-500 ease-out;
   }
   
   /* Cards and containers */
@@ -238,11 +239,11 @@
   }
   
   .stat-card {
-    @apply p-5 rounded-xl border border-nature-sage/30 bg-white/60 backdrop-blur-sm transition-all duration-300 hover:shadow-nature;
+    @apply p-5 rounded-xl border border-orange-200 bg-white/60 backdrop-blur-sm transition-all duration-300 hover:shadow-lg;
   }
   
   .feature-card {
-    @apply eco-card hover:bg-nature-moss-light/20;
+    @apply eco-card hover:bg-orange-50;
   }
   
   /* Animations and effects */
@@ -265,25 +266,25 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-nature-moss-light;
+  @apply bg-orange-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-nature-sage rounded-full;
+  @apply bg-[#F97316] rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-nature-forest;
+  @apply bg-[#ea384c];
 }
 
 /* Selection styling */
 ::selection {
-  @apply bg-nature-sage/30 text-nature-forest;
+  @apply bg-orange-200 text-[#F97316];
 }
 
 /* Focus styles */
 *:focus-visible {
-  @apply outline-none ring-4 ring-nature-sage/30 ring-offset-2 ring-offset-nature-earth-cream;
+  @apply outline-none ring-4 ring-orange-200 ring-offset-2 ring-offset-orange-50;
 }
 
 /* Smooth transitions for theme changes */

@@ -10,12 +10,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-nature-forest text-white hover:bg-nature-forest-light shadow-nature hover:shadow-organic hover:scale-105",
+        default: "bg-gradient-to-r from-[#F97316] to-[#ea384c] text-white hover:opacity-90 shadow-lg hover:shadow-xl hover:scale-105",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border-2 border-nature-sage text-nature-forest bg-transparent hover:bg-nature-sage hover:text-white shadow-soft hover:shadow-nature",
-        secondary: "bg-nature-sage text-nature-forest hover:bg-nature-sage-dark shadow-soft hover:shadow-nature",
-        ghost: "hover:bg-nature-moss-light hover:text-nature-forest",
-        link: "text-nature-forest underline-offset-4 hover:underline hover:text-nature-sage",
+        outline: "border-2 border-[#F97316] text-[#F97316] bg-transparent hover:bg-[#F97316] hover:text-white shadow-md hover:shadow-lg",
+        secondary: "bg-[#FFF7ED] text-[#F97316] hover:bg-[#F97316]/10 shadow-md hover:shadow-lg",
+        ghost: "hover:bg-[#FFF7ED] hover:text-[#F97316]",
+        link: "text-[#F97316] underline-offset-4 hover:underline hover:text-[#ea384c]",
       },
       size: {
         default: "h-11 px-6 py-3",
