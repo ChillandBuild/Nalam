@@ -31,16 +31,16 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`py-4 w-full fixed top-0 left-0 bg-transparent backdrop-blur-sm transition-all duration-300 z-50 ${
-        scrolled ? "bg-white/80 shadow-sm" : ""
+      className={`py-4 w-full fixed top-0 left-0 backdrop-blur-md transition-all duration-300 z-50 ${
+        scrolled ? "nature-nav shadow-nature" : "bg-transparent"
       }`}
     >
-      <div className="container px-4 mx-auto flex items-center justify-between drop-shadow-sm">
+      <div className="container px-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Logo />
         </div>
         
-        {/* Navigation Links with modern design */}
+        {/* Navigation Links with nature design */}
         <DesktopNavLinks 
           currentPath={location.pathname} 
           currentHash={location.hash}
@@ -52,7 +52,7 @@ const Navbar = () => {
           <AuthButtons isOnDashboard={location.pathname === "/dashboard"} />
         </div>
         
-        {/* Mobile Menu Button with animation */}
+        {/* Mobile Menu Button with natural animation */}
         <MobileMenuButton 
           isOpen={isMenuOpen} 
           onClick={() => setIsMenuOpen(!isMenuOpen)} 
