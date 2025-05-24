@@ -12,8 +12,8 @@ const Logo = () => {
         <Leaf className="w-5 h-5 text-white animate-leaf-sway" />
       </div>
       <div className="flex flex-col">
-        <h1 className="font-heading text-4xl font-bold bg-gradient-to-r from-[#F97316] to-[#ea384c] bg-clip-text text-transparent tracking-wide">Nalam</h1>
-        <p className="text-xs text-gray-600">Growing sustainable choices</p>
+        <h1 className="font-serif text-4xl font-bold bg-gradient-to-r from-[#F97316] to-[#ea384c] bg-clip-text text-transparent tracking-wide" style={{fontFamily: "'Playfair Display', serif"}}>Nalam</h1>
+        <p className="text-xs text-gray-600 font-light" style={{fontFamily: "'Lato', sans-serif"}}>Growing sustainable choices</p>
       </div>
     </Link>
   );
