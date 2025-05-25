@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Leaf } from "lucide-react";
+import { Leaf, Sparkles } from "lucide-react";
 
 const Logo = () => {
   return (
@@ -8,12 +8,29 @@ const Logo = () => {
       to="/" 
       className="flex items-center gap-3 transition-all duration-300 hover:scale-105 group"
     >
-      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#F97316] to-[#ea384c] flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-        <Leaf className="w-5 h-5 text-white animate-leaf-sway" />
+      <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-[#F97316] via-[#ea384c] to-[#d946ef] flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 rotate-3 group-hover:rotate-6">
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/20 to-transparent"></div>
+        <Leaf className="w-6 h-6 text-white animate-pulse z-10" />
+        <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-yellow-300 animate-ping" />
       </div>
       <div className="flex flex-col">
-        <h1 className="font-serif text-4xl font-bold bg-gradient-to-r from-[#F97316] to-[#ea384c] bg-clip-text text-transparent tracking-wide" style={{fontFamily: "'Playfair Display', serif"}}>Nalam</h1>
-        <p className="text-xs text-gray-600 font-light" style={{fontFamily: "'Lato', sans-serif"}}>Growing sustainable choices</p>
+        <h1 
+          className="font-bold text-4xl bg-gradient-to-r from-[#F97316] via-[#ea384c] to-[#d946ef] bg-clip-text text-transparent tracking-wider relative"
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 800,
+            textShadow: "0 2px 4px rgba(0,0,0,0.1)"
+          }}
+        >
+          Nalam
+          <span className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full animate-bounce"></span>
+        </h1>
+        <p 
+          className="text-xs font-semibold bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent tracking-wide"
+          style={{fontFamily: "'Lato', sans-serif"}}
+        >
+          Growing sustainable choices
+        </p>
       </div>
     </Link>
   );
