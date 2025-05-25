@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Leaf, ArrowRight } from "lucide-react";
+import { Leaf, ArrowRight, Home } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -106,6 +106,15 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen organic-container flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      {/* Back to Home Button */}
+      <Link 
+        to="/" 
+        className="absolute top-4 left-4 z-20 flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-nature-forest hover:text-[#F97316]"
+      >
+        <Home className="w-4 h-4" />
+        <span className="text-sm font-medium">Back to Home</span>
+      </Link>
+
       {/* Nature-inspired background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-nature-earth-cream to-nature-moss-light opacity-90"></div>
@@ -125,7 +134,7 @@ const SignUp = () => {
               <Leaf className="w-5 h-5 text-white animate-leaf-sway" />
             </div>
             <div className="flex flex-col">
-              <h1 className="font-heading text-4xl font-bold organic-text tracking-wide">Nalam</h1>
+              <h1 className="nalam-cursive-logo text-4xl tracking-wide">Nalam</h1>
               <p className="text-xs text-nature-earth-gray">Growing sustainable choices</p>
             </div>
           </Link>

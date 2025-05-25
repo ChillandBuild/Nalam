@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Lato:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Lato:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -117,7 +117,7 @@
     @apply underline;
   }
 
-  /* Artistic Nalam logo font */
+  /* Artistic Nalam logo font - Updated to Cursive with Heart */
   .nalam-logo {
     font-family: 'Playfair Display', serif;
     font-weight: 800;
@@ -127,6 +127,50 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  /* New Cursive Nalam Logo with Heart */
+  .nalam-cursive-logo {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #F97316 0%, #ea384c 50%, #d946ef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    font-style: italic;
+    transform: rotate(-2deg);
+    transition: all 0.3s ease;
+  }
+
+  .nalam-cursive-logo:hover {
+    transform: rotate(0deg) scale(1.05);
+  }
+
+  /* Heart incorporated into the font */
+  .nalam-cursive-logo::before {
+    content: "♥";
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    font-size: 0.6em;
+    color: #ea384c;
+    animation: heartbeat 2s ease-in-out infinite;
+    z-index: 10;
+  }
+
+  /* Heart animation */
+  @keyframes heartbeat {
+    0%, 100% { 
+      transform: scale(1); 
+      opacity: 0.8; 
+    }
+    50% { 
+      transform: scale(1.2); 
+      opacity: 1; 
+    }
   }
 }
 

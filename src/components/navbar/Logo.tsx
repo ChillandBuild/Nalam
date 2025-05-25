@@ -14,14 +14,7 @@ const Logo = () => {
         <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-yellow-300 animate-ping" />
       </div>
       <div className="flex flex-col">
-        <h1 
-          className="font-bold text-4xl bg-gradient-to-r from-[#F97316] via-[#ea384c] to-[#d946ef] bg-clip-text text-transparent tracking-wider relative"
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontWeight: 800,
-            textShadow: "0 2px 4px rgba(0,0,0,0.1)"
-          }}
-        >
+        <h1 className="nalam-cursive-logo text-4xl tracking-wider relative">
           Nalam
           <span className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full animate-bounce"></span>
         </h1>
