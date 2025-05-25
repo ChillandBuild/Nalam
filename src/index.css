@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;500&family=Quicksand:wght@400;500;600&display=swap');
 
 @tailwind base;
@@ -121,7 +120,7 @@
 }
 
 @layer components {
-  /* Orange/Red theme component styles */}
+  /* Orange/Red theme component styles */
   .nature-card {
     @apply bg-white/90 backdrop-blur-sm rounded-2xl border border-orange-200 shadow-lg transition-all duration-300 hover:shadow-xl;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 247, 237, 0.8));
@@ -190,7 +189,7 @@
     filter: drop-shadow(0 4px 8px rgba(249, 115, 22, 0.2));
   }
   
-  /* Form elements */}
+  /* Form elements */
   .nature-form-group {
     @apply space-y-2;
   }
@@ -207,7 +206,7 @@
     @apply nature-input cursor-pointer;
   }
   
-  /* Navigation styles */}
+  /* Navigation styles */
   .nature-nav {
     @apply bg-white/80 backdrop-blur-md border-b border-orange-200;
   }
@@ -220,7 +219,7 @@
     @apply text-[#F97316] border-b-2 border-[#F97316];
   }
   
-  /* Status indicators */}
+  /* Status indicators */
   .status-positive {
     @apply bg-green-100 text-green-800;
   }
@@ -233,7 +232,7 @@
     @apply bg-blue-100 text-blue-800;
   }
   
-  /* Progress bars */}
+  /* Progress bars */
   .nature-progress {
     @apply bg-orange-100 rounded-full overflow-hidden;
   }
@@ -242,7 +241,7 @@
     @apply bg-gradient-to-r from-[#F97316] to-[#ea384c] h-full transition-all duration-500 ease-out;
   }
   
-  /* Cards and containers */}
+  /* Cards and containers */
   .eco-card {
     @apply nature-card p-6 nature-hover;
   }
@@ -255,7 +254,7 @@
     @apply eco-card hover:bg-orange-50;
   }
   
-  /* Animations and effects */}
+  /* Animations and effects */
   .nature-float {
     animation: gentle-wave 8s ease-in-out infinite;
   }
@@ -269,7 +268,7 @@
   }
 }
 
-/* Custom animations */}
+/* Custom animations */
 @keyframes gentle-wave {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(1deg); }
@@ -285,7 +284,7 @@
   50% { opacity: 0.7; }
 }
 
-/* Custom scrollbar */}
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
