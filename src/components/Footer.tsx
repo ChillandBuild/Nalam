@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <a href="#" className="flex items-center gap-2">
-                  <span className="text-4xl font-tangerine font-bold">Nalam</span>
+                  <span className="nalam-brand text-4xl">Nalam</span>
                 </a>
               </div>
               <p className="text-white text-sm">
@@ -85,7 +85,7 @@ const Footer = () => {
         
         <div className="py-6 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-4 mt-6">
           <div className="text-sm text-black/70">
-            © {new Date().getFullYear()} Nalam. All rights reserved.
+            © {new Date().getFullYear()} <span className="nalam-brand text-base">Nalam</span>. All rights reserved.
           </div>
           <div className="flex gap-6">
             <a href="#" className="text-sm text-black/70 hover:text-black">Privacy Policy</a>
