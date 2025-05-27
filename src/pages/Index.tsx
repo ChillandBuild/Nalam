@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from "../components/Navbar";
 import Features from "../components/Features";
@@ -8,16 +7,33 @@ import FAQ from "../components/FAQ";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 import HealthCards from "../components/HealthCards";
-import SearchForm from "../components/SearchForm";
-import { FoodAnalysisResult } from '../types/food';
+import Search from "./Search";
+import { fetchFoodData } from '../utils/fetchFoodData';
 import Hero from "../components/Hero";
 
-const Index = () => {
-  const [searchResult, setSearchResult] = useState<FoodAnalysisResult | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+interface SectionProps {
+  id?: string;
+}
 
-  const handleSearchResult = (result: FoodAnalysisResult) => {
-    setSearchResult(result);
+const Index = () => {
+  const [foodData, setFoodData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSearch = async (searchTerm: string) => {
+    if (!searchTerm.trim()) return;
+    setIsLoading(true);
+    setError(null);
+    setFoodData(null);
+    try {
+      const data = await fetchFoodData(searchTerm);
+      setFoodData(data);
+    } catch (err: any) {
+      setError(err.message || 'Failed to fetch food data');
+      console.error('Search error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -27,9 +43,11 @@ const Index = () => {
       <Navbar />
       <Hero>
         <div className="w-full max-w-2xl mx-auto">
-          <SearchForm 
-            onSearchResult={handleSearchResult}
-            setIsLoading={setIsLoading}
+          <Search 
+            onSearch={handleSearch}
+            isLoading={isLoading}
+            error={error}
+            foodData={foodData}
           />
         </div>
       </Hero>
