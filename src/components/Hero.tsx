@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Apple, Heart, Coffee, Search, Sparkles } from "lucide-react";
@@ -57,14 +56,7 @@ const Hero = ({ children }: { children?: React.ReactNode }) => {
         </p>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 items-center">
-          <Button className="nature-button px-8 py-3 text-lg">
-            Start Analyzing Food
-          </Button>
-          <Button variant="outline" className="nature-button-secondary px-8 py-3 text-lg">
-            Learn More
-          </Button>
-        </div>
+        {/* ... removed button section ... */}
       </div>
     </section>
   );

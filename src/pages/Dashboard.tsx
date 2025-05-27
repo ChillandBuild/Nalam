@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Heart, LogOut, Info, Star, Target, Trophy, Leaf } from "lucide-react";
@@ -58,7 +57,7 @@ const Dashboard = () => {
       case "scan":
         return <ScanSection />;
       case "history":
-        return <HistorySection />;
+        return <HistorySection onStartScan={() => setActiveTab("scan")} />;
       case "profile":
         return <ProfileSection />;
       default:
@@ -116,23 +115,6 @@ const Dashboard = () => {
                   >
                     Scan Your First Product (+5 points)
                   </Button>
-                  
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Search by product name"
-                      className="w-full pl-10 pr-4 py-3 nature-input"
-                    />
-                  </div>
-                  
-                  <Button 
-                    variant="outline"
-                    onClick={() => setActiveTab("scan")} 
-                    className="w-full nature-button-secondary"
-                  >
-                    Upload Food Image
-                  </Button>
-                  
                   <div className="p-4 bg-nature-water-light/30 rounded-xl border border-nature-sage/30 mt-4">
                     <p className="text-sm text-nature-earth-gray">🌱 Tip: Start by scanning a product to earn your first 5 EcoPoints!</p>
                     <button 
@@ -222,11 +204,18 @@ const Dashboard = () => {
       <header className="py-4 px-6 nature-nav sticky top-0 z-50">
         <div className="container mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 transition-transform hover:scale-105">
-            <div className="w-8 h-8 rounded-full forest-gradient flex items-center justify-center shadow-nature">
-              <Heart className="w-5 h-5 text-white fill-white" />
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#F97316] via-[#ea384c] to-[#d946ef] flex items-center justify-center shadow-nature">
+              <Heart className="w-5 h-5 text-white" style={{ fill: 'url(#nalam-heart-gradient)' }} />
+              <svg width="0" height="0">
+                <linearGradient id="nalam-heart-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#F97316" />
+                  <stop offset="50%" stopColor="#ea384c" />
+                  <stop offset="100%" stopColor="#d946ef" />
+                </linearGradient>
+              </svg>
             </div>
             <div className="flex flex-col">
-              <h1 className="font-heading text-4xl font-bold organic-text tracking-wide">Nalam</h1>
+              <h1 className="nalam-cursive-logo text-4xl tracking-wider relative">Nalam</h1>
               <p className="text-xs text-nature-earth-gray">Making sustainable choices easier</p>
             </div>
           </Link>

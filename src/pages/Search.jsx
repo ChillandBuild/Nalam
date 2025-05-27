@@ -27,12 +27,12 @@ const Search = ({ onSearch, isLoading, error, foodData }) => {
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
             placeholder="Ask Nalam to find food data for..."
-            className="flex-1 px-6 py-5 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400 shadow-md bg-white"
+            className="flex-1 px-6 py-5 text-lg nature-input"
           />
           <button
             type="submit"
             disabled={isLoading}
-            className="px-8 py-4 text-lg bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 text-white rounded-xl font-semibold shadow-md hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-orange-400 disabled:opacity-50"
+            className="px-8 py-4 text-lg nature-button font-semibold"
           >
             Search
           </button>
