@@ -39,7 +39,6 @@ const Hero = ({ children }: { children?: React.ReactNode }) => {
         {/* Main heading with prominent Nalam branding */}
         <div className="mb-8">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 text-gray-900">
-            Build something{" "}
             <span className="nalam-brand text-6xl md:text-8xl">Nalam</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 font-medium">
