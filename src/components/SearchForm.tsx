@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Sparkles, Loader2 } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
 import { FoodAnalysisResult } from "../types/food";
 import { mockFoodData } from "../data/mockFoodData";
 import { Carrot, Apple, Candy, Coffee } from "lucide-react";
@@ -14,7 +14,6 @@ interface SearchFormProps {
 
 const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
   const [query, setQuery] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,7 +21,6 @@ const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
     if (!query.trim()) return;
     
     setIsLoading(true);
-    setIsSearching(true);
     
     // Simulate API call delay
     setTimeout(() => {
@@ -33,7 +31,6 @@ const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
       
       onSearchResult(result);
       setIsLoading(false);
-      setIsSearching(false);
     }, 1500);
   };
 
@@ -50,7 +47,6 @@ const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
     
     // Optional: auto-submit the form if desired
     setIsLoading(true);
-    setIsSearching(true);
     setTimeout(() => {
       // Find matching food in our mock data or return a default
       const result = mockFoodData.find(
@@ -59,7 +55,6 @@ const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
       
       onSearchResult(result);
       setIsLoading(false);
-      setIsSearching(false);
     }, 1500);
   };
 
@@ -71,32 +66,18 @@ const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
           placeholder="Search for a food product (e.g., apple, chips, yogurt)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="pr-10 h-14 text-lg border-2 border-[#F97316] focus-visible:ring-[#ea384c] focus-visible:ring-2 focus-visible:border-[#ea384c] shadow-lg transition-all hover:shadow-xl bg-white rounded-xl"
-          disabled={isSearching}
+          className="pr-10 border-[#F97316] focus-visible:ring-[#ea384c] shadow-sm transition-shadow hover:shadow-md"
         />
-        <Search className="absolute right-3 text-[#F97316]" size={20} />
+        <Search className="absolute right-3 text-[#F97316]" size={18} />
       </div>
       
-      <Button 
-        type="submit" 
-        className="w-full h-14 text-lg bg-gradient-to-r from-[#F97316] to-[#ea384c] hover:from-[#ea384c] hover:to-[#d946ef] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl font-semibold"
-        disabled={isSearching}
-      >
-        {isSearching ? (
-          <>
-            <Loader2 className="mr-2 animate-spin" size={20} />
-            Searching...
-          </>
-        ) : (
-          <>
-            <Search className="mr-2" size={20} />
-            Search
-          </>
-        )}
+      <Button type="submit" className="w-full orange-red-gradient hover:opacity-90 text-white shadow-md hover:shadow-lg transition-shadow">
+        <Search className="mr-2" size={18} />
+        Search
       </Button>
       
-      <div className="bg-gradient-to-br from-[#FFF7ED] to-[#FEE2E2] p-4 rounded-xl mt-4 border-2 border-[#F97316]/20 shadow-lg">
-        <p className="text-sm text-center text-gray-700 font-medium mb-3 flex items-center justify-center">
+      <div className="bg-gradient-to-br from-[#FFF7ED] to-[#FEE2E2] p-4 rounded-lg mt-4 border border-[#F97316]/10 shadow-sm">
+        <p className="text-sm text-center text-nalam-earth-dark font-medium mb-3 flex items-center justify-center">
           <Sparkles size={16} className="text-[#F97316] mr-1" />
           Try searching for these items:
           <Sparkles size={16} className="text-[#ea384c] ml-1" />
@@ -107,71 +88,70 @@ const SearchForm = ({ onSearchResult, setIsLoading }: SearchFormProps) => {
               key={index}
               type="button"
               onClick={() => handleQuickSearch(item.name)}
-              className="flex items-center gap-1.5 bg-white px-3 py-2 rounded-full text-sm shadow-md hover:shadow-lg transition-all hover:scale-105 border-2 border-[#F97316]/30 hover:border-[#F97316] disabled:opacity-50"
+              className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full text-xs shadow-sm hover:shadow-md transition-all hover:scale-105 border border-[#F97316]/20"
               style={{animationDelay: `${index * 0.2}s`}}
-              disabled={isSearching}
             >
-              <item.icon size={16} style={{ color: item.color }} /> 
-              <span className="font-medium">{item.name}</span>
+              <item.icon size={14} style={{ color: item.color }} /> 
+              <span>{item.name}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* Mock Data Preview */}
-      <div className="bg-white p-6 rounded-xl border-2 border-[#F97316]/30 mt-6 shadow-lg hover:shadow-xl transition-all duration-300">
-        <h3 className="font-semibold text-base text-[#ea384c] mb-4 flex items-center">
-          <Sparkles size={18} className="mr-2 text-[#F97316]" />
+      <div className="bg-white p-5 rounded-lg border border-[#F97316]/30 mt-6 shadow-md hover:shadow-lg transition-all duration-300">
+        <h3 className="font-medium text-sm text-[#ea384c] mb-4 flex items-center">
+          <Sparkles size={16} className="mr-2 text-[#F97316]" />
           Popular Searches
         </h3>
         
-        <div className="space-y-4">
-          <div className="p-4 hover:bg-[#F97316]/5 rounded-lg transition-colors cursor-pointer group border border-[#F97316]/20 hover:border-[#F97316]/40" onClick={() => !isSearching && handleQuickSearch("Cold Coffee")}>
+        <div className="space-y-3.5">
+          <div className="p-3 hover:bg-[#F97316]/5 rounded-md transition-colors cursor-pointer group" onClick={() => handleQuickSearch("Cold Coffee")}>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#F97316]/10 group-hover:bg-[#F97316]/20 transition-colors">
-                  <Coffee size={20} className="text-[#F97316]" />
+                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#F97316]/10 group-hover:bg-[#F97316]/20 transition-colors">
+                  <Coffee size={18} className="text-[#F97316]" />
                 </div>
                 <div>
-                  <p className="text-base font-semibold group-hover:text-[#F97316] transition-colors">Cold Coffee</p>
-                  <p className="text-sm text-muted-foreground">Junk Beverage, 180 cal</p>
+                  <p className="text-sm font-medium group-hover:text-[#F97316] transition-colors">Cold Coffee</p>
+                  <p className="text-xs text-muted-foreground">Junk Beverage, 180 cal</p>
                 </div>
               </div>
-              <div className="text-sm px-3 py-1.5 bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 text-[#ea384c] rounded-full font-medium">
+              <div className="text-xs px-2.5 py-1 bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 text-[#ea384c] rounded-full">
                 High Sugar
               </div>
             </div>
           </div>
           
-          <div className="p-4 hover:bg-[#F97316]/5 rounded-lg transition-colors cursor-pointer group border border-[#F97316]/20 hover:border-[#F97316]/40" onClick={() => !isSearching && handleQuickSearch("Instant Noodles")}>
+          <div className="p-3 hover:bg-[#F97316]/5 rounded-md transition-colors cursor-pointer group" onClick={() => handleQuickSearch("Instant Noodles")}>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#ea384c]/10 group-hover:bg-[#ea384c]/20 transition-colors">
-                  <Carrot size={20} className="text-[#ea384c]" />
+                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#ea384c]/10 group-hover:bg-[#ea384c]/20 transition-colors">
+                  <Carrot size={18} className="text-[#ea384c]" />
                 </div>
                 <div>
-                  <p className="text-base font-semibold group-hover:text-[#ea384c] transition-colors">Instant Noodles</p>
-                  <p className="text-sm text-muted-foreground">Junk Food, 340 cal</p>
+                  <p className="text-sm font-medium group-hover:text-[#ea384c] transition-colors">Instant Noodles</p>
+                  <p className="text-xs text-muted-foreground">Junk Food, 340 cal</p>
                 </div>
               </div>
-              <div className="text-sm px-3 py-1.5 bg-gradient-to-r from-[#ea384c]/10 to-[#F97316]/10 text-[#ea384c] rounded-full font-medium">
+              <div className="text-xs px-2.5 py-1 bg-gradient-to-r from-[#ea384c]/10 to-[#F97316]/10 text-[#ea384c] rounded-full">
                 High Sodium
               </div>
             </div>
           </div>
           
-          <div className="p-4 hover:bg-[#F97316]/5 rounded-lg transition-colors cursor-pointer group border border-[#F97316]/20 hover:border-[#F97316]/40" onClick={() => !isSearching && handleQuickSearch("Potato Chips")}>
+          <div className="p-3 hover:bg-[#F97316]/5 rounded-md transition-colors cursor-pointer group" onClick={() => handleQuickSearch("Potato Chips")}>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#F97316]/10 group-hover:bg-[#F97316]/20 transition-colors">
-                  <Candy size={20} className="text-[#F97316]" />
+                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#F97316]/10 group-hover:bg-[#F97316]/20 transition-colors">
+                  <Candy size={18} className="text-[#F97316]" />
                 </div>
                 <div>
-                  <p className="text-base font-semibold group-hover:text-[#F97316] transition-colors">Potato Chips</p>
-                  <p className="text-sm text-muted-foreground">Junk Snack, 270 cal</p>
+                  <p className="text-sm font-medium group-hover:text-[#F97316] transition-colors">Potato Chips</p>
+                  <p className="text-xs text-muted-foreground">Junk Snack, 270 cal</p>
                 </div>
               </div>
-              <div className="text-sm px-3 py-1.5 bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 text-[#ea384c] rounded-full font-medium">
+              <div className="text-xs px-2.5 py-1 bg-gradient-to-r from-[#F97316]/10 to-[#ea384c]/10 text-[#ea384c] rounded-full">
                 Trans Fats
               </div>
             </div>

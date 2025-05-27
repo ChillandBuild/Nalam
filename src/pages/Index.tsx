@@ -9,12 +9,8 @@ import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 import HealthCards from "../components/HealthCards";
 import SearchForm from "../components/SearchForm";
-import { FoodAnalysisResult } from "../types/food";
+import { FoodAnalysisResult } from '../types/food';
 import Hero from "../components/Hero";
-
-interface SectionProps {
-  id?: string;
-}
 
 const Index = () => {
   const [searchResult, setSearchResult] = useState<FoodAnalysisResult | null>(null);
