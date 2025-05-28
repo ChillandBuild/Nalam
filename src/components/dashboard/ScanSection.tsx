@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { fetchFoodData } from "../../utils/fetchFoodData";
 import { FoodDataCard } from "@/components/FoodDataCard";
 
-const ScanSection = ({ onHistoryUpdate }) => {
+const ScanSection = ({ onHistoryUpdate }: { onHistoryUpdate?: (history: any[]) => void }) => {
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResult, setSearchResult] = useState(null);

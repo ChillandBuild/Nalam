@@ -13,16 +13,14 @@ import {
 } from "@/components/ui/carousel";
 import { Switch } from "@/components/ui/switch";
 import { useAuth } from "@/contexts/AuthContext";
-import ProfileSection from "@/components/dashboard/ProfileSection";
 import ScanSection from "@/components/dashboard/ScanSection";
-import HistorySection from "@/components/dashboard/HistorySection";
 
 const Dashboard = () => {
   const { toast } = useToast();
   const { user } = useAuth();
   const [focusMode, setFocusMode] = useState<"eco" | "health">("eco");
   const [progress, setProgress] = useState(0);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "scan" | "history" | "profile">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "scan">("dashboard");
 
   // Simulate progress loading animation
   useEffect(() => {
@@ -56,10 +54,6 @@ const Dashboard = () => {
     switch (activeTab) {
       case "scan":
         return <ScanSection />;
-      case "history":
-        return <HistorySection onStartScan={() => setActiveTab("scan")} />;
-      case "profile":
-        return <ProfileSection />;
       default:
         return (
           // Original dashboard content with nature theme
@@ -220,41 +214,22 @@ const Dashboard = () => {
             </div>
           </Link>
           
+          {/* Remove History tab button in desktop navigation */}
           <nav className="hidden md:flex items-center space-x-6">
+            <Link to="/" className="nature-nav-link">Home</Link>
             <button 
-              onClick={() => setActiveTab("dashboard")} 
+              onClick={() => setActiveTab("dashboard")}
               className={`nature-nav-link ${activeTab === "dashboard" ? "active" : ""}`}
             >
               Dashboard
             </button>
             <button 
-              onClick={() => setActiveTab("scan")} 
+              onClick={() => setActiveTab("scan")}
               className={`nature-nav-link ${activeTab === "scan" ? "active" : ""}`}
             >
               Scan
             </button>
-            <button 
-              onClick={() => setActiveTab("history")} 
-              className={`nature-nav-link ${activeTab === "history" ? "active" : ""}`}
-            >
-              History
-            </button>
-            <button 
-              onClick={() => setActiveTab("profile")} 
-              className={`nature-nav-link ${activeTab === "profile" ? "active" : ""}`}
-            >
-              Profile
-            </button>
           </nav>
-          
-          <div className="flex items-center gap-4">
-            <button 
-              onClick={() => setActiveTab("profile")}
-              className="w-10 h-10 rounded-full forest-gradient flex items-center justify-center text-white font-medium shadow-nature nature-hover"
-            >
-              {userName.charAt(0)}
-            </button>
-          </div>
         </div>
       </header>
       
@@ -263,29 +238,18 @@ const Dashboard = () => {
         <div className="container mx-auto relative z-10">
           {/* Mobile navigation */}
           <div className="md:hidden mb-6 flex items-center justify-between overflow-x-auto pb-2">
+            <Link to="/" className="px-4 py-2 whitespace-nowrap nature-nav-link">Home</Link>
             <button 
-              onClick={() => setActiveTab("dashboard")} 
+              onClick={() => setActiveTab("dashboard")}
               className={`px-4 py-2 whitespace-nowrap nature-nav-link ${activeTab === "dashboard" ? "active" : ""}`}
             >
               Dashboard
             </button>
             <button 
-              onClick={() => setActiveTab("scan")} 
+              onClick={() => setActiveTab("scan")}
               className={`px-4 py-2 whitespace-nowrap nature-nav-link ${activeTab === "scan" ? "active" : ""}`}
             >
               Scan
-            </button>
-            <button 
-              onClick={() => setActiveTab("history")} 
-              className={`px-4 py-2 whitespace-nowrap nature-nav-link ${activeTab === "history" ? "active" : ""}`}
-            >
-              History
-            </button>
-            <button 
-              onClick={() => setActiveTab("profile")} 
-              className={`px-4 py-2 whitespace-nowrap nature-nav-link ${activeTab === "profile" ? "active" : ""}`}
-            >
-              Profile
             </button>
           </div>
           
